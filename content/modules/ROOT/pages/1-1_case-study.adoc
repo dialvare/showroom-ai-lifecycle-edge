@@ -1,0 +1,32 @@
+= Solving a real-world challenge: Our case study
+
+Batteries play a crucial role in the current context of transitioning to electric mobility. These components act as the heart of electric vehicles (EVs), and therefore, one of the most critical pieces of the car. An unexpected failure in one of the cells that composes the battery can lead to significant performance degradation and safety risks. And here is where Artificial Intelligence (AI) comes into play. 
+
+== Developing an AI Solution for the Electric Vehicle
+
+For this lab we will take the role of a systems engineer working for an automotive company that wants to pioneering a new battery health monitoring system. The team's mission is to create an application that can:
+
+. **Collect real-time sensor data**: The car is equipped with different sensors that continuously monitor battery status and driving conditions.
+. **Graphical data display**: The sensor data is displayed graphically as part of the infotainment system.
+. **Predit failures in advance**: Using machine learning techniques, the model must identify early signs of degradation or failure risk.
+. **Automate the response**: If an imminent failure is detected, the system should activate automatic protocols, such as alerting the driver.
+. **Chatbox assistance**: The driver should be able to interact with a chat assistant that will provide him information about batery health and recommendations. 
+
+== AI/ML lifecycle solution
+
+This model must not only be efficient and accurate but also be able to operate autonomusly on edge computing devices within the vehicle, ensuring low lattency and immediate responses. Here are some considerations we need to take regarding the lifecycle of the AI model:
+
+. **Operate autonomously at the edge**: The entire solution must be fully independent, processing data and inferencing in real time within the vehicle.
+. **AI model re-training**: The AI/ML model should be automatically re-trained and validated based on new data. 
+. **Serving the model**: The new model should be served so it can be queried from the Battery monitoring application.
+. **Model Monitoring**: There should be a mechanism for data scientists to monitore the training process and a registry for the different versions.
+
+== Infrastructure considerations
+
+As we have seen, the entire solution needs to be implemented in the vehicle. This means working in an edge environment with limited resources. We will use two machines: one central system to manage training, automation, registering and serving the model, and a second machine for the application, which will query the model with sensor data to detect potential battery failures.
+
+== Next section:
+
+Before reviewing the proposed final design, let's go over some considerations to keep in mind when working in Edge environments.
+
+

@@ -1,0 +1,33 @@
+= Exploring Pre-installed Operators and Setup in our SNO
+
+In order to save some time, our Single Node OpenShift comes with some pre-configured elements and operators, many of which are prerequisites for deploying various Red Hat OpenShift AI components. You can find the list below.
+
+== Logical Volume Manager Storage (LVMS)
+
+OpenShift AI will require some storage when creating workbenches and deploying Notebooks. Therefore, one of the prerequisites will be providing the node with some kind of storage. The Volume Manager Storage operator uses Linux Logical Volume Manager (LVM) as a backend to dynamically provision local storage on a cluster with limited resources, like our Single Node OpenShift.
+
+== Red Hat Authorino Operator (TP)
+
+The Red Hat Authorino operator is one of the pre-requisites for some RHOAI components like the Model Registry. This operator is responsible for managing and securing access to APIs by providing authentication, authorization, and admission control, ensuring only authorized users or services can interact with model versions and serving endpoints.
+
+== Red Hat OpenShift Serverless Operator
+
+Another requirement to enable monitoring in our lifecycle will be the Red Hat OpenShift Serverless operator. This operator is based on the Knative project and enables containers, microservices and functions to run "serverless" on OpenShift.
+
+== Red Hat OpenShift Service Mesh Operator
+
+The last operator needed to later enable the Model Registry component in RHOAI is Red Hat OpenShift Service Mesh. This operator is based on the open source Istio project and offers traffic management, service-to-service authentication, failure recovery, metrics, and monitoring capabilities without requiring any changes on already-existing distributed applications.
+
+== MinIO S3 storage
+
+Red Hat OpenShift AI requires an s3-compatible object storage to accommodate large training datasets, to save the new trained models and to be able to serve them. Also, this s3 storage is used to store artifacts that are generated when using pipelines. The Single Node OpenShift alredy comes with MinIO storage deployed and should be accesed through:
+
+[.console-input]
+[source,sh]
+----
+https://minio-ui-ai-edge-project.apps.cluster-79242.dynamic.redhatworkshops.io
+----
+
+== Next section:
+
+Although the s3 storage is already pre-deployed for us, we still need to create the buckets for the model training and the pipelines; and that's what we will do in the next cahpter. Let's get to it!

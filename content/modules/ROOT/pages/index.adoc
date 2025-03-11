@@ -1,0 +1,19 @@
+= {lab_name}
+
+== Lab overview
+
+This project demonstrates how the integration of AI and edge computing can fit in certain scenarios and solve some customer's use cases.
+
+To bring this demo to life, several technologies will be utilized. The demo will highlight the practical application of AI in resource-constrained environments, emphasizing the importance of automatization for real-time processing. It will also showcase how integrating edge devices and central computing systems -also at the edge- can create a robust and scalable solution for the automotive industry.
+
+Here you can find a list of technologies that will be used and covered during this lab:
+
+* Red Hat OpenShift AI
+* LLMs
+* Time-series models
+* Datascience Pipelines
+* Model Serving
+* GitOps
+* Model registries
+* Red Hat Device Edge
+

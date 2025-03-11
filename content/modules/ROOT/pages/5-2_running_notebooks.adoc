@@ -1,0 +1,15 @@
+= Creating our first AI model
+
+Now it's time to create, train and store our first AI model. As we saw before, we will use Notebooks for it. Open again your workbench's JupyterLab platform and you should see again the Notebooks we imported previously.
+
+To run the Notebook, first open in order each file and press the *Play* button at the top to manually run each cell or the *Double Play* icon to run the entire file.
+
+[IMAGE_HERE]
+
+At this point, you can follow the instructions contained in each Notebook. Those will explain each step in detail. Come back here when you run all of them.
+
+As a summary, after completing all the steps, you will have saved the datasets and the trained model in your MinIO bucket, ready to be consumed.
+
+== Next section:
+
+Until this point, we have created our first AI model. That's awesome! But we want to make the model accessible for devices at the far edge. Here is where Model Serving comes into play. Let's see how it works in the next page!

@@ -1,0 +1,42 @@
+= Setting the Stage: Exploring Our Infrastructure and Design
+
+For this laboratory we have deployed two key elements:
+
+* *Single Node OpenShift*: This is a single-node deployment of OpenShift that will serve as the primary platform for developing, training and serving our AI models straight to our device fleet at the far edge in an automated maner.
+* *RHEL Machine*: A Red Hat Enterprise Linux (RHEL) machine will be used to recreate a device at the edge. We will install MicroShift on it to be able to run our containerized application. This app sends requests to our serving endpoint in our SNO to make predictions.
+
+== Single Node OpenShift
+
+As mentioned before, the Single Node OpenShift will be our central piece in this architecture. This OpenShift node, deployed at the edge, will host our AI model and the different components in charge of serving and automating the entire lifecycle. During this lab we will perform the following actions on this SNO:
+
+* Red Hat Authorino Operator installation
+* Red Hat OpenShift Serverless Operator installation
+* Red Hat OpenShift Service Mesh Operator installation
+* MinIO object storage deployment.
+* Red Hat OpenShift AI Operator installation and enabling the following components:
+** RawDeployment Model Serving
+** DataScience Pipelines
+** Model Registry
+** TrustyAI
+
+During the next chapters we will explain why they are needed and how to enable and use them.
+
+== RHEL Machine
+
+The second machine will be a Red Hat Enterprise Linux bastion. It comes with the latest RHEL 9.4 OS version. This host could be an tiny edge device deployed at the far edge. To run our AI application we are going to do the following steps:
+
+* Installing MicroShift Image Mode
+* Enable GitOps
+* Deploy our AI application
+
+When all the pieces are configured correctly, we should be able to test and play with the app, that will send some data back to our model seved from our core SNO, and use it to make predictions that will return to our edge device.
+
+== Lab design architecture
+
+It could be a bit complicated to compose and understand the scenario right now, but don't worry, below you can find a diagram that shows all the pieces involved in this lab, and we will review every single component through this lab.
+
+[IMAGE_HERE]
+
+== Next section:
+
+Before delving into the details behind each component, in the next section we will explore the most important and necessary components to implement it effectively.

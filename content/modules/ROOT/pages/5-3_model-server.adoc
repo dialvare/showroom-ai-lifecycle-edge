@@ -1,0 +1,31 @@
+# Create a Model Serving platform
+
+A crucial phase in the AI lifecycle following model training is deploying the model in an environment where it can be accessed for inference.
+
+KServe offers two deployment modes: Serverless and RawDeployment. In this scenario, we have chosen RawDeployment, which is often preferred in cases where simpler, more manual configurations are desired. RawDeployment mode provides full control over Kubernetes resources, enabling detailed customization and configuration of deployment settings without relying on Knative, and therefore, without features like auto-scaling.
+
+In this article you will learn how to set up Red Hat OpenShift AI on Single Node OpenShift to make use of the mentioned RawDeployment model serving to expose an already trained computer vision model.
+
+. Navigate to the *Models* tab inside our `ai-edge-project` project.
+. Locate the *Single-model serving platform* option and select *Deploy model*.
+. Complete the following fields in the form:
+ ** *Project*: The `ai-edge-project` namespace should be already selected by default.
+ ** *Model name*: Type the name for the model server. I will use `edge`.
+ ** *Serving runtime*: There are different runtimes to choose. As an example, I will use the `OpenVINO Model Server`; optimized for Intel architectures.
+ ** *Model framework*: Select the format in which you saved the model. My model was exposed in `onnx-1` format.
+ ** *Model server replicas*: Choose the number of pods to serve the model. Just `1` should be okay in my case.
+ ** *Model server size*: Assign resources to the server. I have selected `Medium`, but the more, the better.
+ ** *Accelerator*: If there are GPUs available, you can select them here. As I did during the workbench creation, I can select the `NVIDIA GPU`.
+ ** Check the *Existing data connection* box, if it is not already selected.
+** *Name*: Click on your DataConnection. Mine was `s3creds`.
+** *Path*: Indicate the path to your model location in the S3 bucket. That's: `/models/`. We didn't specify the full path because KServe will automatically pull the model from the _/1/_ subdirectory in the path specified.
+. When configured, click on *Deploy*.
+
+At that moment, new ServingRuntime and InferenceService resources will be created in your node. In the Models tab, your new Model Service should appear. Wait until you see a *green checkmark* in the Status column. Also, the *Inference endpoint* field will show you the model inference API to make requests to.
+
+[NOTE]
+====
+_The URL shown in the Inference endpoint field for the deployed model is not complete. To send queries to the model, you must add the /v2/models/edge/infer string to the end of the URL. More information can be found in the link:https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.12/html-single/release_notes/index?extIdCarryOver=true&sc_cid=701f2000000tyBtAAI#known-issues_relnotes[RHOAIENG-3018 documentation]._
+====
+
+As a result, the model is available as a service and can be accessed using API requests. The Inference endpoint enables you to interact with the model and return predictions based on data inputs. Now it's your turn to connect your application at the edge to start using your model to make predictions!

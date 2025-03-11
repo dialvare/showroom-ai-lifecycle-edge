@@ -1,0 +1,35 @@
+= Breaking Down Lifecycle Automation with Red Hat OpenShift AI
+
+The fundamental piece and operational hub will be the Red Hat OpenShift AI platform, running in our Single Node OpenShift. The RHOAI operator provides data scientists and developers the possibility to work within a common platform where they can collaborate during the entire model lifecycle, making use of both containerization perks and several machine learning and data analytics capabilities.
+
+Red Hat OpenShift AI also enables the integration of components that streamline and ensures efficiency automation across every stage of the lifecycle workflow.
+
+== The Why Behind Every Piece
+
+In this section, we'll dive into the "`why`" behind each critical component necessary to automate the lifecycle and to monitor the process effectively.
+
+=== Data Science Pipelines
+
+Red Hat OpenShift AI implements Kubeflow Pipelines 2.0 which uses Argo Workflows as the underlying engine. A pipeline is a workflow definition containing steps, inputs, and output artifacts, that are stored in S3-compatible storage. These pipelines enables organizations to standardize and automate machine learning workflows that might include steps such as data extraction, processsing, model training and validation.
+
+=== Model Serving
+
+Red Hat OpenShift AI relies on KServe to deploy, manage, and scale ML models. This widely-used Kubernetes open-source platform streamlines the complexities of serving ML models by utilizing a standardized inference protocol across various supported ML frameworks.
+
+The ultimate goal of model serving is to make a model available as a service that can be accessed through an API. In the case of deploying large AI models, RHOAI includes a single model serving platform that pulls the model from the S3 bucket, and creates the inference endpoints to allow applications to send requests.
+
+=== Model Registry
+
+In modern AI workflows, managing machine learning models effectively is critical, especially when operating at the edge. A model registry serves as the cornerstone for organizing, versioning, and deploying AI/ML models in a structured and scalable manner.
+
+When the model registry feature is enabled in Red Hat OpenShift AI, we can use it as an organized central repository that stores metadata from the model like training hyperparameters and metrics or events derived from each model deployment.
+
+=== TrustyAI
+
+TrustyAI in Red Hat OpenShift AI plays an important role in ensuring machine learning models deployed at the edge are reliable. By enabling TrustyAI, data scientists can monitor essential metrics such as bias and data drift, helping to identify unfair patterns during predictions and deviations that could degrade the model performance.
+
+This capability is especially important at the edge, where dynamic environments and diverse data sources can amplify these challenges. TrustyAI ensures that edge-deployed AI systems remain trustworthy and accurate over time.
+
+== Next section:
+
+Now that we understand the components needed to automate the workflow, it's time to start the hands-on experience. Let's see what we need to connect and start using our hosts.

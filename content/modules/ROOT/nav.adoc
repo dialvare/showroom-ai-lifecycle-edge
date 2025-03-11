@@ -1,0 +1,33 @@
+* 1. AI & Edge Use case
+** xref:1-1_case-study.adoc[1.1 Understanding our case]
+** xref:1-2_essentials-edge.adoc[1.2 Essentials of Edge]
+
+* 2. Lab Architecture
+** xref:2-1_architecture.adoc[2.1 Explore our design]
+** xref:2-2_lifecycle-pieces.adoc[2.2 Lifecycle pieces]
+
+* 3. Environment setup
+** xref:3-1_access-environment.adoc[3.1 Environment login]
+** xref:3-2_node-setup.adoc[3.2 Pre-installed Operators]
+** xref:3-3_s3-buckets.adoc[3.3 Creating s3 buckets]
+
+* 4. RHOAI configuration
+** xref:4-1_rhoai-install.adoc[4.1 RHOAI installation]
+** xref:4-2_datascience-project.adoc[4.2 Datascience projects]
+** xref:4-3_workbench.adoc[4.3 Workbenches]
+** xref:4-4_importing_notebooks.adoc[4.4 Explore Notebooks]
+
+* 5. Model Serving
+** xref:5-1_data-connection-serving.adoc[5.1 DataConnections]
+** xref:5-2_running_notebooks.adoc[5.2 Training our model]
+** xref:5-3_model-server.adoc[5.3 Model Serving platform]
+
+* 6. DataScience Pipelines
+** xref:6-1_data-connection-pipelines.adoc[6.1 Pipeline server]
+** xref:6-2_running-pipelines.adoc[6.2 Automating with pipelines]
+
+* 7. Model Monitoring
+** xref:7_TODO_monitoring.adoc[7.1 TrustyAI]
+
+* 8. MicroShift deployment
+** xref:8_TODO_microshift.adoc[8.1 MicroShift]

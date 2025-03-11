@@ -1,0 +1,19 @@
+name: modules
+title: AI/ML Lifecycle Automation at the Edge
+version: master
+nav:
+  - modules/ROOT/nav.adoc
+
+asciidoc:
+  attributes:
+    lab_name: "AI/ML Lifecycle Automation at the Edge"
+    release-version: master
+    page-pagination: true
+    my_var: "foo"
+    guid: my-guid
+    ssh_user: devops
+    ssh_password: devops
+    ssh_command: ssh someone@example.com
+    page-links:
+    - url: https://redhat.com
+      text: Red Hat

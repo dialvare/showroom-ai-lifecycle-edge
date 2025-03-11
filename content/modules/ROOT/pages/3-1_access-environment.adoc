@@ -1,0 +1,51 @@
+= Accessing our environment
+
+This page contains all the links and credentials needed to access each machine and dashboard used in this demo. Although the log in information for every new connection will be detailed during the corresponding episode, you can always come back to this page and use it as a central resource that contains all the log in credentials.
+
+== Single Node OpenShift Web Console
+
+[.console-input]
+[source,sh]
+----
+https://console-openshift-console.apps.cluster-79242.dynamic.redhatworkshops.io
+----
+
+* User: `admin`
+* Password: `<password>`
+
+== Red Hat OpenShift AI Dashboard
+
+[.console-input]
+[source,sh]
+----
+https://rhods-dashboard-redhat-ods-applications.apps.cluster-79242.dynamic.redhatworkshops.io/
+----
+
+* User: `admin`
+* Password: `<password>`
+
+== MinIO object storage Dashboard
+
+[.console-input]
+[source,sh]
+----
+https://minio-ui-ai-edge-project.apps.cluster-79242.dynamic.redhatworkshops.io
+----
+
+* User: `minio`
+* Password: `minio123`
+
+== Red Hat Enterprise Linux Machine
+
+[.console-input]
+[source,sh]
+----
+ssh lab-user@ssh.ocpv05.dal10.infra.demo.redhat.com -p 31059
+----
+
+* User: `lab-user`
+* Password: `<password>`
+
+== Next section:
+
+Now that we have access to our environment, it's time to roll up our sleeves and start setting up the infrastructure. In the next chapter, we will review the pre-configuration of our Single Node OpenShift.

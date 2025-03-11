@@ -1,0 +1,5 @@
+= Automating with pipelines
+
+Automating workflows at the edge could be considered one of the most crucial activities for organizations seeking to reduce latency, maintain robust security standards and enhance the overall efficiency. The edge can be a remote unpleasant place where tasks need to continue running autonomously even in the worst scenarios, since there are usually no working crews on site that can take actions on such critical systems. The solution therefore lies in task automation.
+
+As mentioned at the beginning of this document, there are two different ways to get started with pipelines. It's possible to import an existing pipeline in YAML format created using the KubeFlow Pipelines SDK. This programmatic platform uses Python to simplify the process of writing and building the pipeline. The second alternative, -and the one we will use- is by using the Elyra extension to create the pipeline in a more visual manner.
