@@ -8,7 +8,9 @@ This is a single-node deployment of OpenShift that will serve as the primary pla
 
 In order to save some time, the following operators and components have been already pre-deployed:
 
-* MinIO object storage deployment: Red Hat OpenShift AI requires an s3-compatible object storage to accommodate large training datasets, to save the new trained models and to be able to serve them. Also, this s3 storage is used to store artifacts that are generated when using pipelines.
+* **MinIO object storage**: Red Hat OpenShift AI requires an s3-compatible object storage to accommodate data and models. Also, this s3 storage is used to store artifacts generated when using pipelines. Therefore, two buckets have been created:
+    ** **s3-storage**: used to store data and the new trained AI models.
+    ** **pipelines**: used to store pipelines artifacts.
 
 == RHEL Machine
 
@@ -16,7 +18,7 @@ A Red Hat Enterprise Linux (RHEL) machine will be used to recreate the EV chargi
 
 == Lab design architecture
 
-It could be a bit complicated to compose and understand the scenario right now, but don't worry, below you can find a diagram that shows all the pieces involved in this lab, and we will review every single component through the different sections.
+Sometimes, a picture is worth a thousand words. Below, you will find a diagram illustrating the main components involved in our solution.
 
-[IMAGE_HERE]
+*IMAGE_HERE*
 
