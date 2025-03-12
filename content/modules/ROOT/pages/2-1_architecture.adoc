@@ -1,4 +1,4 @@
-= Setting the Stage: Exploring Our Infrastructure and Design
+= Exploring Our Infrastructure and Design
 
 In this laboratory we will interact with two elements:
 
