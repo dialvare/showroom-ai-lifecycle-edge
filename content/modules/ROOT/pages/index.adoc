@@ -1,0 +1,17 @@
+= {lab_name}
+
+== Lab overview
+
+This project showcases how the integration of AI and edge computing can effectively address specific customer use cases and fit seamlessly into various real-world scenarios. The demo will highlight the practical application of AI in resource-constrained environments, making it essential to use lightweight topologies and platforms such as Single Node OpenShift (SNO) and Red Hat Device Edge.
+
+During the demo, we will develop a robust solution for the automotive industry, highlighting the importance of automation, as dedicated teams are not feasible at the edge. To address this challenge, our solution incorporates key components within Red Hat OpenShift AI to support the entire AI/ML lifecycle at the edge, including model training, data science pipelines, model serving, and model monitoring.
+
+To bring this demo to life, several technologies will be used and covered during this lab:
+
+* Single Node OpenShift
+* Red Hat OpenShift AI
+* Datascience Pipelines (Authorino, Serverless, Service Mesh)
+* Model Serving (RawDeployment mode)
+* Model Monitoring (TrustyAI)
+* Red Hat Device Edge
+* GitOps
