@@ -1,6 +1,6 @@
 = Red Hat OpenShift AI installation
 
-Taking into account that the Single Node OpenShift has been already configured to provide some kind of storage and all the pre-requisites needed for some of the RHOAI components are installed, we are ready to install the Red Hat OpenShift AI operator.
+The fundamental piece and operational hub will be the Red Hat OpenShift AI platform, running in our Single Node OpenShift. The RHOAI operator provides data scientists and developers the possibility to work within a common platform where they can collaborate during the entire model lifecycle, making use of both containerization perks and several machine learning and data analytics capabilities.
 
 . Open the *OpenShift Web Console* and log in using the credentials provided with in the lab instructions. The Console URL is:
 +
