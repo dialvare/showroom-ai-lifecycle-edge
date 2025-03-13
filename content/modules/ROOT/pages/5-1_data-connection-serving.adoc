@@ -1,4 +1,25 @@
-= Create a DataConnection to store our model
+= Working with object storage
+
+== Review MinIO
+
+As we will see later, we will need object storage to store the data used for training the models and for saving them afterward. As we saw at the beginning, MinIO is already configured on our node and should be accesed through:
+
+[.console-input]
+[source,sh]
+----
+https://minio-ui-ai-edge-project.apps.cluster-79242.dynamic.redhatworkshops.io
+----
+
+You will need to use the following credentials to log into the MinIo dashboard:
+
+* User: `minio`
+* Password: `minio123`
+
+In the Object Browser landing page you will spot two different buckets: the one use dfor model training/saving and the one used for storing the pipelines artifacts.
+
+image::2-3_buckets.png[MinIO Buckets]
+
+== Crate DataConnection
 
 At this point, we can use the s3 bucket to store data. In order to make it accessible from our Jupyter environment, we need to create a DataConnection in our node, indicating the set of s3 configuration values.
 
@@ -16,7 +37,3 @@ Red Hat OpenShift AI creates DataConnection resources as OpenShift secrets. Thos
 . When completed, select *Add data connection*.
 
 A new Secret called `aws-connection-s3creds` will be created in your `ai-edge-project` namespace containing all the specified values stored in base64 format.
-
-== Next section:
-
-Now that the s3 storage is attached to our environment, we can proceed with the next step to start using the data connection to store models.
