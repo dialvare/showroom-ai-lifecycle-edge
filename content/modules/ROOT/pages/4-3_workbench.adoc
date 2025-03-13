@@ -10,11 +10,15 @@ Inside the new project, we can create different components. One of them, and pro
  ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2024.2` version.
  ** *Container size*: we can select the resources assigned depending on our hardware: number of CPUs, memory, and request capacity of the container. In this case, the `Small` size is enough.
  ** Check the *Create new persistent storage* box.
-  ** *Name*: Type any desired name for the persistent volume. For example, `model-training-pv`.
+  ** *Name*: Type any desired name for the persistent volume. For example, `model-training`.
   ** *Persistent storage size*: Specify the desired capacity for the volume. I will start with `20GB`, but we can always expand it if necessary.
 . Right now, I will not attach any Data Connection to this workbench. We will see how to set up and use object storage in the next section of this article.
 . Review your configuration and press *Create workbench*. This last step will trigger the workbench creation.
 . You will be automatically redirected to another page where you can track the workbench deployment process. Wait until the _Status_ shows *Running* and click *Open*.
+
+image::2-3_workbench.png[Workbench status]
+
+[start=7]
 . A new tab will open. Enter again your OpenShift credentials to authenticate to the workbench's JupyterLab platform.
 
 == Next section:
