@@ -17,6 +17,4 @@ https://rhods-dashboard-redhat-ods-applications.apps.cluster-79242.dynamic.redha
 . There you can type your preferred project name. In my case, the *Name* will be `ai-edge-project`. Optionally, you can add a description.
 . Then, click *Create*. You will be redirected to the project dashboard page. With this, a new namespace called `ai-edge-project` will be created in your OpenShift node.
 
-== Next section
-
-Remember that we will use this data science project to deploy all the AI-resources tied to our model. Now it's time to create a workbench. That will be our platform for developing and testing the model.
+image::2-2_project.png[Data Science Project]
