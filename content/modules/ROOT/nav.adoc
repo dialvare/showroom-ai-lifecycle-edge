@@ -6,22 +6,24 @@
 * 2. RHOAI configuration
 ** xref:4-1_rhoai-install.adoc[2.1 RHOAI installation]
 ** xref:4-2_datascience-project.adoc[2.2 Datascience projects]
-** xref:4-3_workbench.adoc[2.3 Workbenches]
-** xref:4-4_importing_notebooks.adoc[2.4 Explore Notebooks]
-** xref:5-2_running_notebooks.adoc[2.5 Training our model]
+** xref:5-1_data-connection-serving.adoc[2.3 DataConnections]
 
-* 3. Model Serving
-** xref:5-1_data-connection-serving.adoc[3.2 DataConnections]
-** xref:5-3_model-server.adoc[3.1 Model Serving platform]
+* 3. Model Training
+** xref:4-3_workbench.adoc[3.1 Workbenches]
+** xref:4-4_importing_notebooks.adoc[3.2 Import Notebooks]
+** xref:5-2_running_notebooks.adoc[3.3 Training our model]
 
-* 4. DataScience Pipelines
-** xref:6-1_data-connection-pipelines.adoc[4.1 Pipeline server]
-** xref:6-2_running-pipelines.adoc[4.2 Automating with pipelines]
+* 4. Model Serving
+** xref:5-3_model-server.adoc[4.1 Model Serving platform]
 
-* 5. Battery Management System
+* 5. DataScience Pipelines
+** xref:6-1_data-connection-pipelines.adoc[5.1 Pipeline server]
+** xref:6-2_running-pipelines.adoc[5.2 Automating with pipelines]
 
-* 6. Model Monitoring
-** xref:7_TODO_monitoring.adoc[6.1 TrustyAI]
+* 6. Battery Management System
 
-* 7. Charging optimization
-** xref:8_TODO_microshift.adoc[7.1 MicroShift]
+* 7. Model Monitoring
+** xref:7_TODO_monitoring.adoc[7.1 TrustyAI]
+
+* 8. Charging optimization
+** xref:8_TODO_microshift.adoc[8.1 MicroShift]

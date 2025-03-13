@@ -6,6 +6,9 @@ Usually, model development and training is the most time-consuming part. On Jupi
 
 . Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There, in the third position you will find the *Git* icon. Click it.
 
+image::2-4_git-import.png[Git import]
+
+[start=2]
 
 . In the new menu, select the *Clone repository* option. You will be asked to type the URL to the repo. Copy and paste this one:
 +
