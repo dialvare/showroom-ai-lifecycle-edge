@@ -2,15 +2,17 @@
 
 == Clone the repository
 
-Usually, model development and training is the most time-consuming part. On JupiterLab we can use Notebooks to develp and run the code needed to generate our AI models. In this demo, instead of creating the Notebooks and the code on our own, we are going to clone this link:https://github.com/dialvare/ai-edge-lifecycle.git[GitHub repository] that contains the Notebooks and adititonal resources that we willneed.
+Usually, model development and training is the most time-consuming part. On JupiterLab we can use Notebooks to develp and run the code needed to generate our AI models. In this demo, instead of creating the Notebooks and the code on our own, we are going to clone this link:https://github.com/dialvare/ai-lifecycle-edge.git[GitHub repository] that contains the Notebooks and adititonal resources that we will need later.
 
-. Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There,in the third position you will find the *Git* icon. Click it.
+. Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There, in the third position you will find the *Git* icon. Click it.
+
+
 . In the new menu, select the *Clone repository* option. You will be asked to type the URL to the repo. Copy and paste this one:
 +
 [.console-input]
 [source,sh]
 ----
-https://github.com/dialvare/ai-edge-lifecycle.git
+https://github.com/dialvare/ai-lifecycle-edge.git
 ----
 
 [start=3]

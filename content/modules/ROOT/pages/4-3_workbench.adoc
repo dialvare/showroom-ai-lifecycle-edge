@@ -20,7 +20,3 @@ image::2-3_workbench.png[Workbench status]
 
 [start=7]
 . A new tab will open. Enter again your OpenShift credentials to authenticate to the workbench's JupyterLab platform.
-
-== Next section:
-
-The JupyterLab platform can be used to create custom Notebooks to build and train AI models. But that's something we will see on the next chapter. Let's continue!
