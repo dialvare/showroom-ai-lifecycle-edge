@@ -12,8 +12,8 @@ https://minio-ui-ai-edge-project.apps.cluster-79242.dynamic.redhatworkshops.io
 
 You will need to use the following credentials to log into the MinIo dashboard:
 
-* User: `minio`
-* Password: `minio123`
+* *User*: `minio`
+* *Password*: `minio123`
 
 In the Object Browser landing page you will spot two different buckets: the one use dfor model training/saving and the one used for storing the pipelines artifacts.
 
@@ -25,15 +25,17 @@ At this point, we can use the s3 bucket to store data. In order to make it acces
 
 Red Hat OpenShift AI creates DataConnection resources as OpenShift secrets. Those secrets store all the configuration values that facilitate connecting datascience projects to object storage buckets. Those buckets can contain either the dataset used for the training or the AI models to be served. Let's configure the DataConnection.
 
-. Open again the OpenShift AI web console and navigate to the *Data Connections* tab. There, select *Add data connection*.
-. In the new pop-up window, 3-complete the following fields:
- ** *Name*: Name for the secret. I'm using `s3creds`.
+. Open again the OpenShift AI web console and navigate to the *Connections* tab. There, select *Create connection*.
+. In the new pop-up window, complete the following fields:
+ ** *Connection type*: Select `S3 compatible object storage - v1`
+ ** *Connection Name*: Name for the secret. I'm using `s3-creds`.
  ** *Access key*: Username defined when deploying MinIO. Normally, `minio`.
  ** *Secret key*: Add the MinIO password. In my case, I used `minio123`.
- ** *Endpoint*: You can get the API endpoint URL from the MinIo service in OCP. Mine is `http://minio-service.ai-edge-project.svc.cluster.local:9000`.
+ ** *Endpoint*: You can get the API endpoint URL from the MinIo service in OCP. Mine is `http://minio-service.minio.svc.cluster.local:9000`.
  ** *Region*: It doesn't really matter here. The default value is `us-east-1`.
  ** *Bucket*: Indicate the MinIO bucket name created before. As we saw, I created the `s3-storage` folder to store my trained model.
- ** *Connected workbench*: Select your workbench here. The one that I used for training the model was `model-training`.
-. When completed, select *Add data connection*.
+. When completed, select *Create*.
 
-A new Secret called `aws-connection-s3creds` will be created in your `ai-edge-project` namespace containing all the specified values stored in base64 format.
+A new Secret called `aws-connection-s3-storage` will be created in your `ai-edge-project` namespace containing all the specified values stored in base64 format.
+
+image::2-3_connection.png[DataConnection]
