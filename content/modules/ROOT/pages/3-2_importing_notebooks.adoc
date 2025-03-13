@@ -23,19 +23,3 @@ https://github.com/dialvare/ai-lifecycle-edge.git
 . Click *Clone* to start pulling the contents.
 
 You can navigate through the different folders on the left section.
-
-== Inspect the Notebooks
-
-Now that you have all the data needed, navigate to the *notebooks* folder. All of them are ordered as shown below:
-
-* *0.Transform_dataset*: Creates the raw datasets and uploads them to your s3 bucket.
-* *1.Collect_data*: Pulls and modifies the raw datasets to make them available for training.
-* *2.Re-train_model*: Trains and validates the model using historical and new data.
-* *3.Save_model*: Uploads the onnx forecast model to the s3 bucket.
-* *4.Upload_data*: Uploads the updated datasets with the data already used.
-
-*Do not run them yet!*. As you can see, some of the notebooks will pull and store data from/to the MinIO bucket. To be able to access the service, we first need to attach a data connection to our workbench.
-
-== Next section:
-
-In the following section we will see how to create the data connection and to use it to store our models.
