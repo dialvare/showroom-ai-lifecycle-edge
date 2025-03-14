@@ -12,7 +12,7 @@ The pipeline server instance creates the necessary pods to manage and execute da
 . Here we need to create a new Object storage connection that uses our pipelines bucket. Complete the fields with your s3 data:
  ** *Access key*: Type the MinIO username. In this case `minio`.
  ** *Secret key*: The password for the previous user will be `minio123`.
- ** *Endpoint*: Specify the MinIO API endpoint: `+http://minio-service.ai-edge-project.svc.cluster.local:9000+`.
+ ** *Endpoint*: Specify the MinIO API endpoint: `http://minio-service.minio.svc.cluster.local:9000`.
  ** *Region*: The default value is `us-east-1`.
  ** *Bucket*: Indicate the `pipelines` bucket name.
 . When filled, scroll down and press *Configure pipeline server*.
