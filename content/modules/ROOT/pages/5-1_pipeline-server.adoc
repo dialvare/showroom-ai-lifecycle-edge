@@ -1,20 +1,20 @@
 = Configure a pipeline server
 
-In order to be able to run pipelines in RHOAI, first a pipelines server is needed. Then, all the pipelines can be stored and executed in that server instance. Red Hat OpenShift AI gives the possibilities to import an already existing YAML file containing the pipeline's code or to create a new one within JupyterLab, using the Elyra extension. Elyra provides a visual editor to visually create pipelines based on Notebook or Python files.
+In order to be able to run pipelines in RHOAI, first a pipelines server is needed. Then, all the pipelines can be stored and executed in that server instance. Red Hat OpenShift AI gives the possibilities to import an already existing YAML file containing the pipeline's code or to create a new one within JupyterLab, using the Elyra extension.
 
-In this episode, I will show you how to enable Pipelines within RHOAI, running on a single node OpenShift. We will learn how to deploy the pipelines server and create the necessary pipeline definitions to automate the whole machine learning data science workflow.
+In this chapter, I will show you how to enable Pipelines within RHOAI. We will learn how to deploy the pipelines server and create the necessary pipeline definitions to automate the whole machine learning data science workflow.
 
 The pipeline server instance creates the necessary pods to manage and execute data science pipelines. When we create the server, a new DataSciencePipelineApplication custom resource is created in your OpenShift and provides an API endpoint and a database for storing metadata.
 
 . Open your *Data Science Project* in Red Hat OpenShift AI.
 . In your project dashboard, navigate to the *Pipelines* tab.
 . Before starting using pipelines, we need the server. Click on *Configure pipeline server*.
-. Here we need to create a new Object storage connection that uses our new bucket. Complete the fields with your s3 data:
- ** *Access key*: Use your MinIO username. Usually, the most used is `minio`.
- ** *Secret key*: Write the password for the previous user. In my case, `minio123`.
- ** *Endpoint*: Specify the MinIO API endpoint. My api route is: `+http://minio-service.ai-edge-project.svc.cluster.local:9000+`.
- ** *Region*: The default value is us-east-1, but it's not really used.
- ** *Bucket*: Indicate the pipelines bucket name created in the former step.
+. Here we need to create a new Object storage connection that uses our pipelines bucket. Complete the fields with your s3 data:
+ ** *Access key*: Type the MinIO username. In this case `minio`.
+ ** *Secret key*: The password for the previous user will be `minio123`.
+ ** *Endpoint*: Specify the MinIO API endpoint: `+http://minio-service.ai-edge-project.svc.cluster.local:9000+`.
+ ** *Region*: The default value is `us-east-1`.
+ ** *Bucket*: Indicate the `pipelines` bucket name.
 . When filled, scroll down and press *Configure pipeline server*.
 
 The pipeline server deployment will start creating different components such a MariaDB database where the pipeline results will be stored. Wait until the process is complete. Take into account that it might take a few minutes to finish. Once ready, the Import pipeline option should appear:
