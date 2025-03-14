@@ -28,7 +28,7 @@ Red Hat OpenShift AI creates DataConnection resources as OpenShift secrets. Thos
 . Open again the OpenShift AI web console and navigate to the *Connections* tab. There, select *Create connection*.
 . In the new pop-up window, complete the following fields:
  ** *Connection type*: Select `S3 compatible object storage - v1`
- ** *Connection Name*: Name for the secret. I'm using `s3-creds`.
+ ** *Connection Name*: Name for the secret. I'm using `s3-storage`.
  ** *Access key*: Username defined when deploying MinIO. Normally, `minio`.
  ** *Secret key*: Add the MinIO password. In my case, I used `minio123`.
  ** *Endpoint*: You can get the API endpoint URL from the MinIo service in OCP. Mine is `http://minio-service.minio.svc.cluster.local:9000`.
