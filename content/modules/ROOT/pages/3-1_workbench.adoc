@@ -6,7 +6,7 @@ Inside the new project, we can create different components. One of them, and pro
 . On there, select the *Create workbench* button to open the configuration window.
 . Complete the fields as follows. You will see that there are plenty of different configurations depending on your model and environment specifications:
  ** *Name*: Type your preferred name. I will use `model-training`.
- ** *Image selection*: the election will depend on the model requirements. Click on View package information to see the packages included. Our model will use `Pytorch`.
+ ** *Image selection*: the election will depend on the model requirements. Click on View package information to see the packages included. Our model will use `TensorFlow`.
  ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2024.2` version.
  ** *Container size*: we can select the resources assigned depending on our hardware: number of CPUs, memory, and request capacity of the container. In this case, the `Small` size is enough.
  ** Check the *Create new persistent storage* box.
