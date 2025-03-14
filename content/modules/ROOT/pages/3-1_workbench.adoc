@@ -16,7 +16,7 @@ Inside the new project, we can create different components. One of them, and pro
 . Review your configuration and press *Create workbench*. This last step will trigger the workbench creation.
 . You will be automatically redirected to another page where you can track the workbench deployment process. Wait until the _Status_ shows *Running* and click *Open*.
 
-image::2-3_workbench.png[Workbench status]
+image::3-1_workbench.png[Workbench status]
 
 [start=7]
 . A new tab will open. Enter again your OpenShift credentials to authenticate to the workbench's JupyterLab platform.

@@ -6,7 +6,7 @@ Usually, model development and training is the most time-consuming part. On Jupi
 
 . Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There, in the third position you will find the *Git* icon. Click it.
 
-image::2-4_git-import.png[Git import]
+image::3-2_git-import.png[Git import]
 
 [start=2]
 
@@ -22,4 +22,4 @@ https://github.com/dialvare/ai-lifecycle-edge.git
 
 . Click *Clone* to start pulling the contents.
 
-You can navigate through the different folders on the left section.
+When finished, all the lab folders and resources should appear on the left section.

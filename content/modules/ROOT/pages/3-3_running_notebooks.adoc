@@ -2,19 +2,17 @@
 
 Now it's time to create, train and store our first AI model. As we saw before, we will use the Notebooks that we just imported for it. To do so, navigate to the *notebooks* folder. All of them are ordered as shown below:
 
-* *01_retrieve_influx_data.ipynb*: Creates the raw datasets and uploads them to your s3 bucket.
-* *02_prepare_data.ipynb*: Pulls and modifies the raw datasets to make them available for training.
-* *03_bms_stress_detection_training.ipynb*: Trains and validates the model using historical and new data.
-* *04_predict_stress.ipynb*: Uploads the onnx forecast model to the s3 bucket.
-* *05_bms_ttf_training.ipynb*: Uploads the updated datasets with the data already used.
-* *06_predict_ttf.ipynb*: Uploads the updated datasets with the data already used.
+* *01_retrieve_influx_data.ipynb*: Retrieves the battery data from InfluxDB and saves it.
+* *02_prepare_data.ipynb*: Modifies the raw dataset to make them available for training.
+* *03_bms_stress_detection_training.ipynb*: Trains the Stress Detection model and saves it localy.
+* *04_predict_stress.ipynb*: Validates the Stres Detection model performance with new data.
+* *05_bms_ttf_training.ipynb*: Trains the Time to Failure model and saves it localy.
+* *06_predict_ttf.ipynb*: Validates the Time to Failure model performance with new data.
 * *07_save_models.ipynb*: Uploads the updated datasets with the data already used.
-* *08_query_models.ipynb*: Uploads the updated datasets with the data already used.
+* *08_query_models.ipynb*: Uploads the new models to the s3 MinIO bucket. 
 
 To run the Notebook, first open in order each file and press the *Play* button at the top to manually run each cell or the *Double Play* icon to run the entire file.
 
 image::3-3_run-notebooks.png[Run Notebooks]
 
 At this point, you can follow the instructions contained in each Notebook. Those will explain each step in detail. Come back here when you run all of them.
-
-As a summary, after completing all the steps, you will have saved the trained models in your MinIO bucket, ready to be consumed.
