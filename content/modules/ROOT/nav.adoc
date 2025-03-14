@@ -18,8 +18,8 @@
 ** xref:4-2_ttf-model-server.adoc[4.2 Time to Failure serving]
 
 * 5. DataScience Pipelines
-** xref:6-1_data-connection-pipelines.adoc[5.1 Pipeline server]
-** xref:6-2_running-pipelines.adoc[5.2 Automating with pipelines]
+** xref:5-1_pipeline-server.adoc[5.1 Pipeline server]
+** xref:5-2_running-pipelines.adoc[5.2 Automating with pipelines]
 
 * 6. Battery Management System
 
