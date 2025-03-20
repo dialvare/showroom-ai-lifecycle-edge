@@ -11,6 +11,11 @@ In this section you will learn how to set up Red Hat OpenShift AI on Single Node
 . Go back to our *Red Hat OpenShift AI Dashboard* and make sure you are still inside the `ai-edge-project` project.
 . Navigate to the *Models* tab.
 . Locate the Single-model serving platform option and choose *Select single-model*.
+
+image::4-1_create-serving.png[Select Single Model Serving]
+
+[start=4]
+
 . This options deploys an associated model server for each model. Click on *Deploy model*.
 . Complete the following fields in the form:
  ** *Project*: The `ai-edge-project` namespace should be already selected by default.
@@ -25,6 +30,8 @@ In this section you will learn how to set up Red Hat OpenShift AI on Single Node
 . When configured, click on *Deploy*.
 
 At that moment, new ServingRuntime and InferenceService resources will be created in your node. In the Models tab, your new Model Service should appear. Wait until you see a *green checkmark* in the Status column. Also, check the *Internal endpoint details* to show the model inference API where to make requests to.
+
+image::4-1_stress-detection.png[Stress detection inference endpoint]
 
 [NOTE]
 ====
