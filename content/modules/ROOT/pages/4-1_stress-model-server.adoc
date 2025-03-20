@@ -8,7 +8,8 @@ In this section you will learn how to set up Red Hat OpenShift AI on Single Node
 
 == Stress detection model
 
-. Navigate to the *Models* tab inside our `ai-edge-project` project.
+. Go back to our *Red Hat OpenShift AI Dashboard* and make sure you are still inside the `ai-edge-project` project.
+. Navigate to the *Models* tab.
 . Locate the Single-model serving platform option and choose *Select single-model*.
 . This options deploys an associated model server for each model. Click on *Deploy model*.
 . Complete the following fields in the form:
@@ -30,5 +31,5 @@ At that moment, new ServingRuntime and InferenceService resources will be create
 _The URL shown in the Inference endpoint field for the deployed model is not complete. To send queries to the model, you must add the /v2/models/<model_name>/infer string to the end of the URL. More information can be found in the link:https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.12/html-single/release_notes/index?extIdCarryOver=true&sc_cid=701f2000000tyBtAAI#known-issues_relnotes[RHOAIENG-3018 documentation]._
 ====
 
-As a result, the model is available as a service and can be accessed using API requests. The Inference endpoint enables you to interact with the model and return predictions based on data inputs.
+As a result, the model is available as a service and can be accessed using API requests.
 

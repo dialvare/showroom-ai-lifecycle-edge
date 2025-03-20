@@ -1,6 +1,6 @@
 = Creating our firsts AI models
 
-Now it's time to create, train and store our first AI model. As we saw before, we will use the Notebooks that we just imported for it. To do so, navigate to the *notebooks* folder. All of them are ordered as shown below:
+Now it's time to create, train and store our firsts AI models. As we saw before, we will use the Notebooks that we just imported for it. To do so, navigate to the *notebooks* folder. All of them are ordered as shown below:
 
 * *01_retrieve_influx_data.ipynb*: Retrieves the battery data from InfluxDB and saves it.
 * *02_prepare_data.ipynb*: Modifies the raw dataset to make them available for training.
@@ -8,8 +8,8 @@ Now it's time to create, train and store our first AI model. As we saw before, w
 * *04_predict_stress.ipynb*: Validates the Stres Detection model performance with new data.
 * *05_bms_ttf_training.ipynb*: Trains the Time to Failure model and saves it localy.
 * *06_predict_ttf.ipynb*: Validates the Time to Failure model performance with new data.
-* *07_save_models.ipynb*: Uploads the updated datasets with the data already used.
-* *08_query_models.ipynb*: Uploads the new models to the s3 MinIO bucket. 
+* *07_save_models.ipynb*: Uploads the new models to the s3 MinIO bucket.
+* *08_query_models.ipynb*: Used in Module 4 to test and query the inference endpoints. 
 
 To run the Notebook, first open in order each file and press the *Play* button at the top to manually run each cell or the *Double Play* icon to run the entire file.
 

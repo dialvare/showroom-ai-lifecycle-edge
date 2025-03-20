@@ -27,11 +27,12 @@ a|- RHOAI installation
 | Model Training | 15min 
 a|- Workbenches
 - Import Notebooks
-- Training our model
+- Training our models
 
 | Model Serving | 10min 
 a|- Stress Detection serving
 - Time to Failure serving
+- Query inference endpoints
 
 | DataScience Pipelines | 10min 
 a|- Pipeline server

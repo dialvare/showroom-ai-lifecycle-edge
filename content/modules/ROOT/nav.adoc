@@ -10,12 +10,13 @@
 
 * 3. Model Training
 ** xref:3-1_workbench.adoc[3.1 Workbenches]
-** xref:3-2_importing_notebooks.adoc[3.2 Import Notebooks]
-** xref:3-3_running_notebooks.adoc[3.3 Training our model]
+** xref:3-2_importing-notebooks.adoc[3.2 Import Notebooks]
+** xref:3-3_running-notebooks.adoc[3.3 Training our models]
 
 * 4. Model Serving
 ** xref:4-1_stress-model-server.adoc[4.1 Stress Detection serving]
 ** xref:4-2_ttf-model-server.adoc[4.2 Time to Failure serving]
+** xref:4-3_query-endpoints.adoc[4.3 Query inference endpoints]
 
 * 5. DataScience Pipelines
 ** xref:5-1_pipeline-server.adoc[5.1 Pipeline server]

@@ -1,0 +1,7 @@
+= Test and Query inference endopoints
+
+The Inference endpoint enables you to interact with the model and return predictions based on data inputs. Let's test it from a Jupyter Notebook:
+
+. Navigate back to the *Jupyter Notebook* environment that we used for model training. 
+. Locate in the `notebooks` folder the *08_query_models.ipynb* notebook. 
+. 
