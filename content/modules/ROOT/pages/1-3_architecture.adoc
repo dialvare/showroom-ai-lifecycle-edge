@@ -1,24 +1,35 @@
 = Exploring Our Infrastructure and Design
 
-In this laboratory we will interact with two elements:
+Now that we understand the goal of the lab, the solution we want to implement, and the existing limitations, it is time to focus on the infrastructure we will be working with. As we have mentioned before, this infrastructure consists of two key components:
 
 == Single Node OpenShift
 
-This is a single-node deployment of OpenShift that will serve as the primary platform for developing, training and serving our AI models in an automated maner thanks to Red Hat OpenShift AI. Also we will run our Battery Monitoring System application here.
+This is a single-node deployment of OpenShift that will serve as the primary platform for developing, training, and serving our AI models in an automated manner thanks to Red Hat OpenShift AI. This single node is located within our vehicle, ensuring that the data collected by the car's sensors does not need to be sent to any cloud. Instead, it can be processed and used directly for model retraining on the vehicle itself. Additionally, our Battery Monitoring System application will also run on this node, making use of the trained models to provide predictions through the infotainment system.
 
-In order to save some time, the following operators and components have been already pre-deployed:
+In order to save some time and allow us to focus on the core aspects of the lab, the Single Node OpenShift has been pre-configured with the following components:
 
-* **MinIO object storage**: Red Hat OpenShift AI requires an s3-compatible object storage to accommodate data and models. Also, this s3 storage is used to store artifacts generated when using pipelines. Therefore, two buckets have been created:
-    ** **s3-storage**: used to store data and the new trained AI models.
-    ** **pipelines**: used to store pipelines artifacts.
+* *MinIO object storage*: Red Hat OpenShift AI requires an s3-compatible object storage to accommodate data and models. Also, this s3 storage is used to store artifacts generated when using pipelines. Therefore, MinIO has been deployed on the cluster, and two buckets have been created:
+    ** `s3-storage`: used to store data and the new trained AI models.
+    ** `pipelines`: used to store pipelines artifacts.
+
+* *Battery Monitoring System application*: The application includes all the necessary components for generating vehicle data and visually displaying it. Additionally, it will constantly querying our AI models to provide real-time predictions about the battery's health.
+    ** `AMQ Broker Operator`: Ensures reliable and scalable communication between applications.
+    ** `AMQ Broker`: Used as MQTT broker.
+    ** `Battery simulator`: Quarkus component that simulates the battery of a driving electric vehicle. The BMS is sending telemetry data to the MQTT broker.
+    ** `InfluxDB`: Time series database, configured with auto setup.
+    ** `data-ingester`: Quarkus component that reads data from MQTT and stores it InfluxDB.
+    ** `BMS Dashboard`: Angular component that displays the battery telemetry data in realtime and serves as a frontend for a GenAI chatbot.
+    ** `mqtt2ws`: Camel Quarkus component that reads data from MQTT and exposes it as Websocket for the BMS Dashboard.
 
 == RHEL Machine
 
-A Red Hat Enterprise Linux (RHEL) machine will be used to recreate the EV charging station. This machine comes with MicroShift installed and already running. We will need MicroShift to be able to run our containerized application. This app interacts with the Battery Monitoring System to optimize the charging cicle.
+A Red Hat Enterprise Linux (RHEL) machine will be used to recreate the EV charging station. This machine comes with MicroShift installed and already running. We will need MicroShift to be able to run our containerized application. This Charging Optimization app interacts with the Battery Monitoring System to optimize the charging cicle.
 
 == Lab design architecture
 
-Sometimes, a picture is worth a thousand words. Below, you will find a diagram illustrating the main components involved in our solution.
+Building on top of these two components, the entire solution will be deployed. RHOAI will be installed and used for model training, model serving, and automation with Pipelines, while continuously monitoring the AI models. Finally, these models will be utilized by our two applications: the Battery Monitoring app running on our SNO and the Charging Optimization app with Red Hat Device Edge.
+
+Sometimes, a picture is worth a thousand words. Below, you will find a diagram illustrating the main components involved in our solution:
 
 *IMAGE_HERE*
 

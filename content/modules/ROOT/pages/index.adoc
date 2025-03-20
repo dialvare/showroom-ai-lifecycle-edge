@@ -6,12 +6,46 @@ This project showcases how the integration of AI and edge computing can effectiv
 
 During the demo, we will develop a robust solution for the automotive industry, highlighting the importance of automation, as dedicated teams are not feasible at the edge. To address this challenge, our solution incorporates key components within Red Hat OpenShift AI to support the entire AI/ML lifecycle at the edge, including model training, data science pipelines, model serving, and model monitoring.
 
-To bring this demo to life, several technologies will be used and covered during this lab:
+== Lab contents
 
-* Single Node OpenShift
-* Red Hat OpenShift AI
-* Datascience Pipelines (Authorino, Serverless, Service Mesh)
-* Model Serving (RawDeployment mode)
-* Model Monitoring (TrustyAI)
-* Red Hat Device Edge
-* GitOps
+To bring this demo to life, several technologies will be used and covered during this lab. Below is a summary of the materials that will be covered:
+
+[width="100%",cols="6,^4,7",options="header"]
+|===
+| Chapter | Duration | Contents
+
+| AI & Edge Use case | 10min 
+a|- Understanding our case
+- Essentials of Edge
+- Explore our design
+
+| RHOAI configuration | 15min 
+a|- RHOAI installation
+- Datascience projects
+- DataConnections
+
+| Model Training | 15min 
+a|- Workbenches
+- Import Notebooks
+- Training our model
+
+| Model Serving | 10min 
+a|- Stress Detection serving
+- Time to Failure serving
+
+| DataScience Pipelines | 10min 
+a|- Pipeline server
+- Automating with pipelines
+
+| Battery Management System | 10min 
+a|- App dashboard
+- Simulate failure
+
+| Model Monitoring | 5min 
+a|- TrustyAI
+- Detect bias
+
+| Charging optimization | 15min 
+a|- MicroShift
+- Validate predictions
+|===
