@@ -7,6 +7,8 @@ Inside the new project, we can create different components. One of them, and pro
 
 image::3-1_create-workbench.png[Create Workbench]
 
+[start=3]
+
 . Complete the fields as follows. You will see that there are plenty of different configurations depending on your model and environment specifications:
  ** *Name*: Type your preferred name. I will use `model-training`.
  ** *Image selection*: the election will depend on the model requirements. Click on View package information to see the packages included. Our model will use `TensorFlow`.
