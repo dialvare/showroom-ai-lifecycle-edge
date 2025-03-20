@@ -47,4 +47,4 @@ Now, we should be able to access the OpenShift AI Web Console. On the right side
 
 image::2-1_rhoai-access.png[Access RHOAI]
 
-A new tab will open. Log in using your OpenShift credentials and you will be redirected to  the Red Hat OpenShift AI landing page.
+A new tab will open. Log in using your OpenShift credentials. You may need to authorize access to our user. If so, click *Allow selected permissions* and you will be redirected to the Red Hat OpenShift AI landing page.
