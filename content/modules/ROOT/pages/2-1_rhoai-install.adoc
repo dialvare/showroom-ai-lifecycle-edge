@@ -9,6 +9,8 @@ The fundamental piece and operational hub will be the Red Hat OpenShift AI platf
 ----
 https://console-openshift-console.apps.cluster-79242.dynamic.redhatworkshops.io
 ----
+* *User*: `<ocp_user>`
+* *Password*: `<ocp_password>`
 
 [start=2]
 

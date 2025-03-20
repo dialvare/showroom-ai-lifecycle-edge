@@ -7,15 +7,15 @@ As we will see later, we will need object storage to store the data used for tra
 [.console-input]
 [source,sh]
 ----
-https://minio-ui-ai-edge-project.apps.cluster-79242.dynamic.redhatworkshops.io
+https://minio-ui-minio.apps.cluster-79242.dynamic.redhatworkshops.io
 ----
 
-You will need to use the following credentials to log into the MinIo dashboard:
+You will need to use the following credentials to log into the MinIO dashboard:
 
 * *User*: `minio`
 * *Password*: `minio123`
 
-In the Object Browser landing page you will spot two different buckets: the one use dfor model training/saving and the one used for storing the pipelines artifacts.
+In the Object Browser landing page you will spot two different buckets: the one used for model training/saving and the one used for storing the pipelines artifacts.
 
 image::2-3_buckets.png[MinIO Buckets]
 
