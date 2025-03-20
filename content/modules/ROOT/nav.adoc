@@ -16,7 +16,7 @@
 * 4. Model Serving
 ** xref:4-1_stress-model-server.adoc[4.1 Stress Detection serving]
 ** xref:4-2_ttf-model-server.adoc[4.2 Time to Failure serving]
-** xref:4-3_query-endpoints.adoc[4.3 Query inference endpoints]
+** xref:4-3_query-endpoints.adoc[4.3 Querying endpoints]
 
 * 5. DataScience Pipelines
 ** xref:5-1_pipeline-server.adoc[5.1 Pipeline server]
