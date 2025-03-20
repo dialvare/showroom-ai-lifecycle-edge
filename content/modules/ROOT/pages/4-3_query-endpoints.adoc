@@ -1,7 +1,19 @@
 = Test and Query inference endopoints
 
-The Inference endpoint enables you to interact with the model and return predictions based on data inputs. Let's test it from a Jupyter Notebook:
+The Inference endpoint enables you to interact with the model and return predictions based on data inputs. We can test the connection with our models from a Jupyter Notebook:
 
 . Navigate back to the *Jupyter Notebook* environment that we used for model training. 
 . Locate in the `notebooks` folder the *08_query_models.ipynb* notebook. 
-. 
+. Run the first cell to interact with the Stress Detection model.
+. If everything is correctly configured, we should get a response based on the input data:
+
+*IMAGE_HERE*
+
+[start=5]
+
+. Now run the second cell to test the inference endpoint for the Time to Failure model.
+. Again, we should see a response with the predicted time to failure:
+
+*IMAGE_HERE*
+
+In this section, we have verified that our models are being served from RHOAI and are accessible through the endpoint. Similar to what we did from the Notebook, we will be able to perform queries from our Battery Monitoring System application, but we will explore that later.

@@ -18,6 +18,6 @@ It's time to repeat the same steps for the Time to Failure AI model. The steps w
 ** *Path*: Our Time to Failure model was saved in `models/time-to-failure/`.
 . Finally, click on *Deploy*.
 
-Wait until you see a *green checkmark* in the Status column. Then, the *Internal endpoint details* will show the model inference API for our second AI model. This Inference endpoint enables you to interact with the model and return predictions based on data inputs.
+Wait until you see a *green checkmark* in the Status column. Then, the *Internal endpoint details* will show the model inference API for our second AI model.
 
 image::4-2_time-to-failure.png[Time to Failure inference endpoint]
