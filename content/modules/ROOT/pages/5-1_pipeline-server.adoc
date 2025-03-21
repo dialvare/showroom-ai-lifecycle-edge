@@ -1,14 +1,19 @@
 = Configure a pipeline server
 
-In order to be able to run pipelines in RHOAI, first a pipelines server is needed. Then, all the pipelines can be stored and executed in that server instance. Red Hat OpenShift AI gives the possibilities to import an already existing YAML file containing the pipeline's code or to create a new one within JupyterLab, using the Elyra extension.
+Automation in edge computing is crucial for ensuring reliable and efficient operations in remote environments. Given that many edge deployments are in locations where IT teams are not readily available, it is essential to develop robust and self-sustaining processes that require minimal human intervention. Automated workflows help maintain system stability, optimize performance, and reduce downtime, ensuring that critical applications continue to function without constant manual oversight.
 
-In this chapter, I will show you how to enable Pipelines within RHOAI. We will learn how to deploy the pipelines server and create the necessary pipeline definitions to automate the whole machine learning data science workflow.
+Red Hat OpenShift AI implements Kubeflow Pipelines 2.0. A pipeline is a workflow definition containing steps, inputs, and output artifacts, that are stored in S3-compatible storage. These pipelines enables organizations to standardize and automate machine learning workflows that might include steps such as data extraction, processsing, model training and validation.
 
-The pipeline server instance creates the necessary pods to manage and execute data science pipelines. When we create the server, a new DataSciencePipelineApplication custom resource is created in your OpenShift and provides an API endpoint and a database for storing metadata.
+In order to be able to run pipelines in RHOAI, first a pipelines server is needed. The pipeline server instance creates the necessary pods to manage and execute data science pipelines. Let's review the process to creatae the server:
 
-. Open your *Data Science Project* in Red Hat OpenShift AI.
-. In your project dashboard, navigate to the *Pipelines* tab.
-. Before starting using pipelines, we need the server. Click on *Configure pipeline server*.
+. Navigate back to the *Red Hat OpenShift AI Dashboard*.
+. In your `ai-edge-project` project dashboard, navigate to the *Pipelines* tab.
+. Before starting using pipelines, we need to create the server. Click on *Configure pipeline server*.
+
+image::5-1_pipeline-server.png[Create Pipelines Server]
+
+[start=4]
+
 . Here we need to create a new Object storage connection that uses our pipelines bucket. Complete the fields with your s3 data:
  ** *Access key*: Type the MinIO username. In this case `minio`.
  ** *Secret key*: The password for the previous user will be `minio123`.
@@ -17,4 +22,6 @@ The pipeline server instance creates the necessary pods to manage and execute da
  ** *Bucket*: Indicate the `pipelines` bucket name.
 . When filled, scroll down and press *Configure pipeline server*.
 
-The pipeline server deployment will start creating different components such a MariaDB database where the pipeline results will be stored. Wait until the process is complete. Take into account that it might take a few minutes to finish. Once ready, the Import pipeline option should appear:
+When we create the server, a new DataSciencePipelineApplication custom resource is created in your OpenShift and provides an API endpoint and a database for storing metadata. Wait until the process is complete. Take into account that it might take a few minutes to finish. Once ready, the Import pipeline option should appear:
+
+image::5-1_import-pipeline.png[Pipelines Server ready]
