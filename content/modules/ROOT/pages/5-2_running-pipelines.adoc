@@ -1,7 +1,39 @@
 = Automating with pipelines
 
-Then, all the pipelines can be stored and executed in that server instance. Red Hat OpenShift AI gives the possibilities to import an already existing YAML file containing the pipeline's code or to create a new one within JupyterLab, using the Elyra extension.
+Red Hat OpenShift AI gives the possibilities to create pipelines by dragging and connecting Notebooks using the Elyra extension. The second alternative, -and the one we will use- is by importing an existing pipeline in YAML format created using the KubeFlow Pipelines SDK. This programmatic platform uses Python to simplify the process of writing and building the pipeline.
 
-It's possible to create pipelines by dragging and connecting Notebooks using the Elyra extension. The second alternative, -and the one we will use- is by importing an existing pipeline in YAML format created using the KubeFlow Pipelines SDK. This programmatic platform uses Python to simplify the process of writing and building the pipeline.
+== Import Pipeline
+
+Once the server is set up, we will create a pipeline to fully automate the process. This pipeline will collect new data from the BMS application and use it to retrain a new model. The performance of this new model will then be compared against the existing one. If it outperforms the current model, it will be uploaded to the S3 bucket, where Model Serving will automatically deploy it. This process will be repeated for both the Stress Detection and Time to Failure Prediction models.
+
+In order to save some time we will import it instead of creating it manually. If you want to learn more about how to create pipelines, check the link:https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.18/html/openshift_ai_tutorial_-_fraud_detection_example/implementing-pipelines#create_a_pipeline [documentation].
+
+. First, open the *Jupyter Environment* with the Notebooks used to train the models and test the endpoints. 
+. In the folder structure on the left, locate the `pipelines` folder and open it. 
+. Locate the `model_retraining.yaml` pipeline file. *Right-click* on it and select *Download*.
+. Save the file locally in your laptop.
+
+image::5-2_pipeline-download.png[Download pipeline file]
+
+[start=5]
+
+. Now, go back to your *Red Hat OpenShift AI Dashboard*.
+. Make sure you are in the *Pipelines* tab inside our project.
+. Select *Import pipeline* and complete the form as follows:
+ ** *Project*: The `ai-edge-project` project should be selected by default.
+ ** *Pipeline name*: Name it as `Model retraining`.
+ ** Verify that the *Upload a file* check is marked.
+ ** Click the *Upload* button and select the `model_retraining.yaml` from your laptop.
+. When completed, press *Import pipeline*.
+
+You should see the different pipeline nodes and steps displayed in a graphical way, like this:
+
+*IMAGE_HERE*
+
+== Schedule recurring execution
+
+
+
+
 
 
