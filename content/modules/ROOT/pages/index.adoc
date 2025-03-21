@@ -32,14 +32,15 @@ a|- Workbenches
 | Model Serving | 10min 
 a|- Stress Detection serving
 - Time to Failure serving
-- Query inference endpoints
+- Querying endpoints
 
 | DataScience Pipelines | 10min 
 a|- Pipeline server
-- Automating with pipelines
+- Pipelines automation
 
 | Battery Management System | 10min 
-a|- App dashboard
+a|- Understanding BMS app 
+- App dashboard
 - Simulate failure
 
 | Model Monitoring | 5min 

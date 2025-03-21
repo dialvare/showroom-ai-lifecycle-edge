@@ -20,9 +20,10 @@
 
 * 5. DataScience Pipelines
 ** xref:5-1_pipeline-server.adoc[5.1 Pipeline server]
-** xref:5-2_running-pipelines.adoc[5.2 Automating with pipelines]
+** xref:5-2_running-pipelines.adoc[5.2 Pipelines automation]
 
 * 6. Battery Management System
+** xref:6_TODO_bms.adoc[6.1 Understanding BMS app]
 
 * 7. Model Monitoring
 ** xref:7_TODO_monitoring.adoc[7.1 TrustyAI]
