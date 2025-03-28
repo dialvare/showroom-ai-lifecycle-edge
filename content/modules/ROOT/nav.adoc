@@ -26,7 +26,9 @@
 ** xref:6_TODO_bms.adoc[6.1 Understanding BMS app]
 
 * 7. Model Monitoring
-** xref:7_TODO_monitoring.adoc[7.1 TrustyAI]
+** xref:7-1_trustyai.adoc[7.1 TrustyAI]
+** xref:7-2_TODO_bias.adoc[7.2 Detect bias]
+** xref:7-3_TODO_drift.adoc[7.3 Data drift]
 
 * 8. Charging optimization
 ** xref:8_TODO_microshift.adoc[8.1 MicroShift]

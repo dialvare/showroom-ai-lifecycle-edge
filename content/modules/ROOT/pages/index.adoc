@@ -45,7 +45,8 @@ a|- Understanding BMS app
 
 | Model Monitoring | 5min 
 a|- TrustyAI
-- Detect bias
+- Bias detection
+- Data drift
 
 | Charging optimization | 15min 
 a|- MicroShift

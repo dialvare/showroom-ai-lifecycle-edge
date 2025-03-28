@@ -1,0 +1,73 @@
+= The importance of model monitoring
+
+Automating model retraining and validation with Pipelines is a powerful approach to ensuring that AI models remain up to date without manual intervention. However, this automation also introduces a level of uncertainty, as new models are continuously generated and deployed without direct oversight. In such a scenario, enabling model monitoring is a crucial step to maintaining model reliability and performance over time.
+
+== Enable Trusty AI
+
+TrustyAI in Red Hat OpenShift AI plays an important role in ensuring machine learning models deployed at the edge are reliable. By enabling TrustyAI, data scientists can monitor essential metrics such as bias and data drift, helping to identify unfair patterns during predictions and deviations that could degrade the model performance. Let's start configuring it:
+
+. As mentioned during the installation of RHOAI, we ensured that the TrustyAI component was enabled during the operator deployment. This was the first step before being able to enable model monitoring in our cluster. Let's double check before continuing:
+ ** Open your *OpenShift Console* and navigate to *Operators > Installed Operators* to locate *Red Hat OpenShift AI*.
+ ** Access the *Data Science Cluster* tab and click on the *default-dcs* resource.
+ ** The DataScienceCluster contains all the RHOAI configuration. Open the *YAML* tab and scroll down until you spot the `trustyai` component.
+ ** Verify that the `managementState` shows `managed` as show below. If not, change it manually. 
+
+ IMAGE_HERE
+
+. Now we are going to enable monitoring in our single-model serving platform. To do so, we need to create two resources. Click on the *+* icon that appears on the right side of the top menu bar to import the following YAML files. Click *Create* for each of them:
+
+[.console-input]
+[source,sh]
+----
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-workload-monitoring-config
+  namespace: openshift-user-workload-monitoring
+data:
+  config.yaml: |
+    prometheus:
+      logLevel: debug
+      retention: 15d
+----
+
+[.console-input]
+[source,sh]
+----
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-monitoring-config
+  namespace: openshift-monitoring
+data:
+  config.yaml: |
+    enableUserWorkload: true
+----
+
+. There's one last resource we need to create. That's the TrustyAI service inside our DataScience Project. Still in the _Import YAML_ dashboard, search for your `ai-edge-project` namespace in the upper drop-down *Project* list. 
+. Then, paste the following code and press *Create* again:
+
+[.console-input]
+[source,sh]
+----
+apiVersion: trustyai.opendatahub.io/v1alpha1
+kind: TrustyAIService
+metadata:
+  name: trustyai-service
+spec:
+  storage:
+    format: "PVC"
+    folder: "/inputs"
+    size: "1Gi"
+  data:
+    filename: "data.csv"
+    format: "CSV"
+  metrics:
+    schedule: "5s"
+    batchSize: 5000
+----
+
+. 
+
+== Data Collection through TrustyAI
+
