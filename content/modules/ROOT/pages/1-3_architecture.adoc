@@ -1,35 +1,28 @@
 = Exploring Our Infrastructure and Design
 
-Now that we understand the goal of the lab, the solution we want to implement, and the existing limitations, it is time to focus on the infrastructure we will be working with. As we have mentioned before, this infrastructure consists of two key components:
+Now that we understand the goal of the lab, the solution we want to implement, and the existing limitations, it is time to focus on the infrastructure we will be working with. As we have mentioned before, this infrastructure consists of two key components: the Electric vehicle and the re-training machine. 
 
-== Single Node OpenShift
+== Electric vehicle (RHDE)
+Inside our electric vehicle, we’ve deployed a RHEL machine running MicroShift. This machine is also equipped with MinIO storage. One bucket is used to store sensor data, while another is dedicated to storing AI models used for battery fault detection. Additionally, the AI Model Serving component has been deployed to load and serve the models for inference. By default, two baseline models are preloaded at startup. These will later be replaced by the retrained models coming from our Single Node OpenShift instance. Additionally, our Battery Monitoring System application will also run on this node, making use of the trained models to provide predictions through the infotainment system alonw with the data generated.
 
-This is a single-node deployment of OpenShift that will serve as the primary platform for developing, training, and serving our AI models in an automated manner thanks to Red Hat OpenShift AI. This single node is located within our vehicle, ensuring that the data collected by the car's sensors does not need to be sent to any cloud. Instead, it can be processed and used directly for model retraining on the vehicle itself. Additionally, our Battery Monitoring System application will also run on this node, making use of the trained models to provide predictions through the infotainment system.
+== Re-training Node (SNO)
+This is a single-node deployment of OpenShift that will serve as the primary platform for training and validating our AI models in an automated manner thanks to Red Hat OpenShift AI. This operator is already deployed and configured with a Workbench that will be used to review and run the Nodebooks used for re-training. This single node is located outside our vehicle and will only be used when the vehicle is plugged into a chargin station. In that moment, the data will flow from the MinIO database in the MicroShift cluster to MinIO instance that is also deployed in our SNO. 
 
-In order to save some time and allow us to focus on the core aspects of the lab, the Single Node OpenShift has been pre-configured with the following components:
-
-* *MinIO object storage*: Red Hat OpenShift AI requires an s3-compatible object storage to accommodate data and models. Also, this s3 storage is used to store artifacts generated when using pipelines. Therefore, MinIO has been deployed on the cluster, and two buckets have been created:
-    ** `s3-storage`: used to store data and the new trained AI models.
-    ** `pipelines`: used to store pipelines artifacts.
-
-* *Battery Monitoring System application*: The application includes all the necessary components for generating vehicle data and visually displaying it. Additionally, it will constantly querying our AI models to provide real-time predictions about the battery's health.
-    ** `AMQ Broker Operator`: Ensures reliable and scalable communication between applications.
-    ** `AMQ Broker`: Used as MQTT broker.
-    ** `Battery simulator`: Quarkus component that simulates the battery of a driving electric vehicle. The BMS is sending telemetry data to the MQTT broker.
-    ** `InfluxDB`: Time series database, configured with auto setup.
-    ** `data-ingester`: Quarkus component that reads data from MQTT and stores it InfluxDB.
-    ** `BMS Dashboard`: Angular component that displays the battery telemetry data in realtime and serves as a frontend for a GenAI chatbot.
-    ** `mqtt2ws`: Camel Quarkus component that reads data from MQTT and exposes it as Websocket for the BMS Dashboard.
-
-== RHEL Machine
-
-A Red Hat Enterprise Linux (RHEL) machine will be used to recreate the EV charging station. This machine comes with MicroShift installed and already running. We will need MicroShift to be able to run our containerized application. This Charging Optimization app interacts with the Battery Monitoring System to optimize the charging cicle.
-
-== Lab design architecture
-
-Building on top of these two components, the entire solution will be deployed. RHOAI will be installed and used for model training, model serving, and automation with Pipelines, while continuously monitoring the AI models. Finally, these models will be utilized by our two applications: the Battery Monitoring app running on our SNO and the Charging Optimization app with Red Hat Device Edge.
-
+= Solution Workflow
 Sometimes, a picture is worth a thousand words. Below, you will find a diagram illustrating the main components involved in our solution:
+
+image::1-3_diagram.png[Demo architecture]
+
+* (1) Our environment comes with two AI models stored in the _models_ MinIO bucket. The first one called *Stress detection* will be able to identify early signs of battery stress-conditions that may lead to degradation or failure. The second one - *Time to Failure* - uses sensor data to provide an estimate of the remaining time until a potential battery failure.
+* (2) Both models are loaded into the InferenceServer instance to make them available for inference via API endpoints.
+* (3) Once the infrastructure is ready, it's time to start generating data. The Battery simulator item is a Quarkus component that simulates the battery of a driving electric vehicle and sends telemetry data to the Mosquitto MQTT broker that acts as the central messaging hub, receiving the data coming from the emulated sensors.
+* (4) Two different Came Quarkus components are in charge of reading the data from Mosquitto and send it to the Battery Monitoring System (BMS) app. The *mqtt2ws* exposes the data as Websocket for the BMS Dashboard and the *data ingester* stores it in InfluxDB. From there, a scheduled task running every 10 minutes, collects all the data stored in the time series database and sends it to the _data_ MinIO bucket.
+* (5) The Battery Monitoring System application includes a component that retrieves real-time data from InfluxDB and sends it as queries to the two inference endpoints and receives the predictions from the AI models currently being served.
+* (6) The response returned by the models is analyzed, and if necessary, it is forwarded to an alerting system that triggers notifications in case of detected battery stress conditions or signs of an imminent failure.
+* (7) When the vehicle connects to a charging station, the data stored in our database running inside MicroShift is sent to the database bucket of the MinIO instance deployed on the Single Node OpenShift.
+* (8) Once the new data is available, a pipeline is triggered to collect the data, retrain the model, and compare its performance against the existing one. All in a fully automated manner.
+* (9) If the comparison results show that the new models perform better, they are then uploaded to the *models* MinIO bucket in the SNO for future use.
+* (10) Finally the new models are sent back from the MinIO instance in the SNO to the MinIO database in the vehicle, so the cicle can start again with a the updated models.
 
 *IMAGE_HERE*
 
