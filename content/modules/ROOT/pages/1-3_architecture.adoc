@@ -2,13 +2,13 @@
 
 Now that we understand the goal of the lab, the solution we want to implement, and the existing limitations, it is time to focus on the infrastructure we will be working with. As we have mentioned before, this infrastructure consists of two key components: the Electric vehicle and the re-training machine. 
 
-== Electric vehicle (RHDE)
+=== Electric vehicle (RHDE)
 Inside our electric vehicle, we’ve deployed a RHEL machine running MicroShift. This machine is also equipped with MinIO storage. One bucket is used to store sensor data, while another is dedicated to storing AI models used for battery fault detection. Additionally, the AI Model Serving component has been deployed to load and serve the models for inference. By default, two baseline models are preloaded at startup. These will later be replaced by the retrained models coming from our Single Node OpenShift instance. Additionally, our Battery Monitoring System application will also run on this node, making use of the trained models to provide predictions through the infotainment system alonw with the data generated.
 
-== Re-training Node (SNO)
+=== Re-training Node (SNO)
 This is a single-node deployment of OpenShift that will serve as the primary platform for training and validating our AI models in an automated manner thanks to Red Hat OpenShift AI. This operator is already deployed and configured with a Workbench that will be used to review and run the Nodebooks used for re-training. This single node is located outside our vehicle and will only be used when the vehicle is plugged into a chargin station. In that moment, the data will flow from the MinIO database in the MicroShift cluster to MinIO instance that is also deployed in our SNO. 
 
-= Solution Workflow
+== Solution Workflow
 Sometimes, a picture is worth a thousand words. Below, you will find a diagram illustrating the main components involved in our solution:
 
 image::1-3_diagram.png[Demo architecture]
@@ -23,6 +23,3 @@ image::1-3_diagram.png[Demo architecture]
 * (8) Once the new data is available, a pipeline is triggered to collect the data, retrain the model, and compare its performance against the existing one. All in a fully automated manner.
 * (9) If the comparison results show that the new models perform better, they are then uploaded to the *models* MinIO bucket in the SNO for future use.
 * (10) Finally the new models are sent back from the MinIO instance in the SNO to the MinIO database in the vehicle, so the cicle can start again with a the updated models.
-
-*IMAGE_HERE*
-
