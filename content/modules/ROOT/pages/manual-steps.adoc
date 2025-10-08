@@ -1,0 +1,47 @@
+= [WIP] Manual Automation Steps
+
+This section covers the manual steps required to complete the demo setup. The steps described in this section will be automated in the near future while the demo environment is provisioned. But for now, those automations are not there and need to be performed manually.
+
+== Connecting to the Autonomous Vehicle
+
+To access the autonomous vehicle's infrastructure, you need to connect through the bastion host first, and then access the MicroShift virtual machine.
+
+=== Step 1: Connect to the Bastion Host
+
+First, establish an `ssh` connection to the bastion host using the command provided in your environment credentials. Something like:
+
+[source,bash]
+----
+ssh lab-user@ssh.ocpv07.rhdp.net -p 32191
+----
+
+When asked for a password, please anter the bastion password provided in the lab credentials.
+
+=== Step 2: Access the Vehicle's Virtual Machine
+
+Once connected to the bastion, use `virtctl` to access the autonomous vehicle's virtual machine. The command should look similar to the following one:
+
+[source,bash]
+----
+virtctl ssh cloud-user@microshift.microshift-001 --identity-file=/home/lab-user/.ssh/microshift-001
+----
+
+== Expanding Disk Storage
+
+After connecting to the autonomous vehicle, you'll need to expand the disk size to accommodate the required storage for the Battery Monitoring System workloads that will be deployed. Run the following commands to expand the disk storage:
+
+[source,bash]
+----
+sudo growpart /dev/vda 2
+sudo pvresize /dev/vda2
+sudo lvextend -l +100%FREE /dev/rhel/root
+sudo xfs_growfs /
+df -h /
+
+sudo pvcreate /dev/vdb
+sudo vgextend rhel /dev/vdb
+----
+
+== Next Steps
+
+Once these manual steps are completed, the autonomous vehicle environment will be ready. You can continue with the intructions.

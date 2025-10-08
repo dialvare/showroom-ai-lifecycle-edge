@@ -1,20 +1,20 @@
 = Solving a Real-World Challenge: Our Case Study
 
-Batteries play a crucial role in the current context of transitioning to electric mobility. These components act as the heart of electric vehicles (EVs), and therefore, one of the most critical pieces of the car. An unexpected failure in one of the cells that composes the battery can lead to significant performance degradation and safety risks. And here is where Artificial Intelligence (AI) becomes a powerful ally. 
+Batteries play a crucial role in the current context of electric vehicles. But the definition of electric vehicles embraces not only electric cars, but also other types of autonomous vehicles such as those we can find operating in industrial facilities. Batteries act as the heart of these autonomous machines, and therefore, becomes one of the most critical components of the vehicle. An unexpected failure in one of the cells that composes the battery can lead to significant performance degradation and safety risks, potentially disrupting critical plant operations. And here is where Artificial Intelligence (AI) becomes a powerful ally.
 
-== Developing an AI Solution for the Electric Vehicle
+== Developing an AI Solution for the Autonomous Vehicle
 
-In this lab we will take the role of a systems engineer working for an automotive company aiming to enhance battery management and operations in electric vehicles. The team's mission is to create an end-to-end solution at the edge that covers two different scenarios:
+In this lab we will take the role of a systems engineer working for a logistics company aiming to enhance battery management and operations in autonomous vehicles operating within the plant. The team's mission is to create an end-to-end solution at the edge that covers two different scenarios:
 
 === Battery Monitoring System
-In our electric vehicle we need to run an application responsible for monitoring the health of the battery in the car. This application also displays telemetry data collected from in-vehicle sensors such as voltage, temperature, driving distance or velocity via a graphical dashboard. In addition, this dashboard comes with an alerting system pwered by AI models that are able to detect early signs of battery stress and predict potential failure.
+In our electric vehicles we need to run an application responsible for monitoring the health of the battery during its various routes throughout the plant. This application also displays telemetry data collected from in-vehicle sensors such as voltage, temperature, driving distance or velocity via a graphical dashboard that can be monitored from the plant offices. In addition, this dashboard comes with an alerting system powered by AI models that are able to detect early signs of battery stress and predict potential failure.
 
-To support this containerized solution inside our vehicle, a lightweight kubernetes platform is essential. This is where Red Hat Device Edge (MicroShift) comes into play. 
+To support this containerized solution inside our vehicle, a lightweight kubernetes platform is essential. This is where Red Hat Device Edge (MicroShift) comes into play.
 
 === Model Re-Training at the Edge
-To ensure the AI models remain accurate and effective in detecting anomalies, they must be regularly updated with the latest data gathered from the vehicle. However, given the large volume of telemetry data generated, it’s impractical to continuously upload all of it over potentially unstable internet connections.
+To ensure the AI models remain accurate and effective in detecting anomalies, they must be regularly updated with the latest data gathered from the vehicle during its operational routes. However, given the large volume of telemetry data generated during the vehicle's daily operations, it's impractical to continuously upload all of it over potentially unstable internet connections.
 
-To overcome this challenge, the system takes advantage of charging sessions at EV charging stations to securely transmit the gathered data. This data is then used to retrain the AI models on a more powerful edge server outside the vehicle. For the entire AI/ML lifecycle, we rely on Red Hat OpenShift AI (RHOAI), deployed on a Single Node OpenShift (SNO) instance. The workflow is fully automated: the new dataset triggers the retraining of the model, followed by model validation. If the updated model outperforms the existing one, it is automatically deployed back to the vehicle, ensuring improved performance and smarter battery monitoring on the road.
+To overcome this challenge, the system takes advantage of charging sessions when the vehicle returns to its charging station to securely transmit the gathered data. This data is then used to retrain the AI models on a more powerful edge server at the plant. For the entire AI/ML lifecycle, we rely on Red Hat OpenShift AI (RHOAI), deployed on a Single Node OpenShift (SNO) instance. The workflow is fully automated: the new dataset triggers the retraining of the models, followed by model validation. If the updated models outperform the existing ones, they are automatically deployed back to the vehicle, ensuring improved performance and smarter battery monitoring during plant operations.
 
 
 
