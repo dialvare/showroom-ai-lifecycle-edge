@@ -1,0 +1,61 @@
+= Vehicle Infrastructure Setup
+
+In this section, we will work with our autonomous vehicle operating within the industrial plant. This vehicle will be equipped with a battery monitoring system that uses AI models to predict battery stress conditions and time to failure.
+
+Our goal in this section is to verify that the vehicle's infrastructure is properly configured and running, so we can deploy the necessary components to run our Battery Monitoring System app in the following sections.
+
+== Checking MicroShift Status
+
+Once connected to our autonomous vehicle, the first step is to verify that MicroShift is running correctly. MicroShift is Red Hat's lightweight Kubernetes distribution designed specifically for edge computing environments. It provides the essential Kubernetes functionality needed to run containerized applications in resource-constrained environments like our autonomous vehicle.
+
+MicroShift is necessary for our solution because it allows us to:
+- Deploy and manage containerized applications in a lightweight manner
+- Orchestrate our battery monitoring system and AI model serving components
+- Provide storage and networking capabilities for our edge workloads
+
+To check the status of MicroShift, execute the following command:
+
+[source,bash]
+----
+oc get pods -A
+----
+
+You should see various pods in `Running` status across different namespaces:
+
+[source,bash]
+----
+NAMESPACE                  NAME                                         READY   STATUS      RESTARTS        AGE
+kube-system                csi-snapshot-controller-74795dc54f-lp9tf     1/1     Running     0               1d
+openshift-dns              dns-default-vk7fd                            2/2     Running     0               1d
+openshift-dns              node-resolver-4dfs2                          1/1     Running     0               1d
+openshift-gitops           argocd-application-controller-0              1/1     Running     0               1d
+openshift-gitops           argocd-redis-648648759c-dngbg                1/1     Running     0               1d
+openshift-gitops           argocd-repo-server-7bf65c5f8f-ljjzc          1/1     Running     0               1d
+openshift-ingress          router-default-59f4f4c47b-hnqh9              1/1     Running     0               1d
+openshift-ovn-kubernetes   ovnkube-master-p5dfb                         4/4     Running     0               1d
+openshift-ovn-kubernetes   ovnkube-node-8cp97                           1/1     Running     0               1d
+openshift-service-ca	   service-ca-755884c9cf-f2g4n                  1/1     Running     0               1d
+openshift-storage          lvms-operator-65d4bdf577-j2g9z               1/1     Running     0               1d
+openshift-storage          vg-manager-vg6lr                             1/1     Running     0               1d
+redhat-ods-applications    kserve-controller-manager-548d8c4ffb-7pg5x   1/1     Running     0               1d
+----
+
+This indicates that MicroShift is properly initialized and all core components are operational. If all pods show `Running` status, the vehicle's infrastructure is correctly configured and ready for the next steps.
+
+Let's quickly review what these pods are responsible for:
+
+The following namespaces contain the essential MicroShift components:
+
+* *kube-system*: Contains the core Kubernetes system pods
+* *openshift-dns*: Handles DNS resolution services for the cluster
+* *openshift-ovn-kubernetes*: Provides the networking layer with OVN (Open Virtual Network) for communication
+* *openshift-storage*: Manages local volume management services (LVM) for persistent storage
+* *openshift-service-ca*: Provides certificate authority services for internal cluster communication
+
+Beyond the core MicroShift functionality, we can see that additional services are enabled:
+
+* *openshift-gitops*: GitOps capabilities are enabled, providing ArgoCD components for continuous deployment and configuration management. This allows us to manage our applications through Git-based workflows.
+
+* *redhat-ods-applications*: The KServe controller manager is running, which provides AI/ML model serving capabilities. This is essential for our battery monitoring system as it will handle the deployment and management of our AI models for stress detection and time-to-failure prediction.
+
+These additional services are crucial for our autonomous vehicle's battery monitoring solution, as they provide the infrastructure needed for both application deployment (GitOps) and AI model serving (KServe).
