@@ -7,10 +7,10 @@
 ** xref:manual-steps.adoc[Manual steps]
 
 * 2. Autonomous Vehicle
-** xref: 2-1_vehicle-infrastructure.adoc[2.1 Vehicle infra]
-** xref: 2-2_minio-deployment.adoc[2.2 Deploying MinIO]
-** xref: 2-3_inference-deployment.adoc[2.3 Serving models]
-** xref: 2-4_deploy_bms.adoc[2.4 Deploying the BMS app]
+** xref:2-1_vehicle-infrastructure.adoc[2.1 Vehicle infra]
+** xref:2-2_minio-deployment.adoc[2.2 Deploying MinIO]
+** xref:2-3_inference-deployment.adoc[2.3 Serving models]
+** xref:2-4_deploy_bms.adoc[2.4 Deploying the BMS app]
 
 * 3. RHOAI configuration
 ** xref:3-1_rhoai-install.adoc[3.1 RHOAI installation]
