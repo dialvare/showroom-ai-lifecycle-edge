@@ -1,0 +1,111 @@
+= Deploying MinIO Storage
+
+In this section, we will deploy MinIO storage as the first component within our autonomous vehicle. MinIO will serve as our object storage solution, providing two essential buckets:
+
+* *Data bucket*: Stores the telemetry data collected from vehicle sensors during operational routes
+* *Models bucket*: Stores AI models used for battery monitoring - initially base models that we provide, and later the retrained models from our SNO instance. These models are essential for our inference component to access and serve them for real-time battery stress detection and time-to-failure prediction.
+
+== Deploying MinIO using GitOps
+
+We will use GitOps to deploy MinIO in our autonomous vehicle. GitOps is the preferred method for deploying workloads at the edge, as it provides version control over what's running on the vehicle and ensures alignment between the repository code and the deployed components.
+
+The first step is to create a GitOps application project that will group all the resources we deploy in this demo.
+
+=== Step 1: Create GitOps Application Project
+
+Create the following GitOps application project by applying this configuration:
+
+[source,yaml]
+----
+oc apply -f - <<EOF
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: default
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+EOF
+----
+
+=== Step 2: Create GitOps Application
+
+Now that we have the project, we will create our GitOps Application that will be responsible for checking the files in our GitOps repository and deploying the different components necessary for MinIO.
+
+Apply the GitOps Application:
+
+[source,yaml]
+----
+oc apply -f - <<EOF
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio-storage-microshift
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: bootstrap/minio-storage-microshift/groups/dev
+    repoURL: https://github.com/dialvare/ai-lifecycle-edge.git
+    targetRevision: main
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+EOF
+----
+
+The GitOps Application will deploy the following components for MinIO storage:
+
+* *Namespace*: A dedicated `minio` namespace that will contain all MinIO-related resources, providing isolation and organization for our storage components.
+* *Deployment*: The MinIO application deployment that runs the MinIO server instance, configured to provide object storage capabilities for our autonomous vehicle.
+* *Service and Route*: A Kubernetes service and route that expose the MinIO dashboard, allowing us to access and manage the storage through a web interface.
+* *Persistent Volume Claim (PVC)*: Provides persistent storage space that will be used by the MinIO buckets to store both sensor data and AI models.
+* *Bucket Creation Script*: An initialization script that automatically creates the required buckets:
+  - `data` bucket for storing telemetry data from vehicle sensors
+  - `models` bucket for storing AI models (both baseline and retrained models)
+* *Model Download Script*: A script that downloads and stores our two baseline AI models from the GitHub repository:
+  - Stress detection model for identifying battery stress conditions
+  - Time-to-failure model for predicting remaining battery life
+
+To verify that the deployment is progressing correctly, you can monitor the status of the pods:
+
+[source,bash]
+----
+watch oc get pods -n minio
+----
+
+When all pods show `Running` or `Completed` status, it means that MinIO has been successfully deployed and is ready to use.
+
+=== Step 3: Access MinIO Dashboard
+
+Once the deployment is complete, you can access the MinIO dashboard through your web browser:
+
+[source,bash]
+----
+# TODO: Add MinIO dashboard route URL
+----
+
+Use the following credentials to log in:
+* **Username**: `minio`
+* **Password**: `minio123`
+
+The dashboard will allow you to verify that both buckets (`data` and `models`) have been created and that the baseline AI models have been properly downloaded and stored.
+
+
+
+
+
+
