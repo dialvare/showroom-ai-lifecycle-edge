@@ -99,6 +99,7 @@ Once the deployment is complete, you can access the MinIO dashboard through your
 ----
 
 Use the following credentials to log in:
+
 * **Username**: `minio`
 * **Password**: `minio123`
 
