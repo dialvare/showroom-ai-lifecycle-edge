@@ -1,0 +1,80 @@
+= Deploying AI Model Inference Server
+
+In this section, we will deploy the AI model inference server that will serve our battery monitoring models. The inference server is a critical component that enables real-time AI predictions for battery stress detection and time-to-failure estimation.
+
+The inference server is responsible for loading and serving our AI models to make predictions based on real-time sensor data. According to the [Red Hat MicroShift documentation](https://docs.redhat.com/en/documentation/red_hat_build_of_microshift/4.19/html-single/using_ai_models/index#microshift-rh-openshift-ai), Red Hat OpenShift AI Self-Managed provides a single-model serving platform based on the KServe component of Kubernetes.
+
+The inference server is necessary because:
+
+* *Real-time predictions*: It provides low-latency inference capabilities for our battery monitoring system, enabling immediate responses to sensor data
+* *Model serving*: It loads and manages our AI models (stress detection and time-to-failure) from the MinIO storage
+* *API endpoints*: It exposes RESTful APIs that our Battery Monitoring System can query for predictions
+* *Resource efficiency*: It optimizes model loading and inference performance in the constrained edge environment
+
+The inference server uses KServe custom resource definitions (CRDs) to define the lifecycle of deployment objects, storage access, and networking setup, making it ideal for our autonomous vehicle's edge deployment.
+
+== Deploying Inference Server using GitOps
+
+We will deploy the inference server using the same GitOps approach as MinIO, ensuring consistent deployment and management of our edge components.
+
+=== Step 1: Deploy GitOps Application
+
+Deploy the inference server GitOps application:
+
+[source,yaml]
+----
+oc apply -f - <<EOF
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: model-server
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: bootstrap/model-server/groups/dev
+    repoURL: https://github.com/dialvare/ai-lifecycle-edge.git
+    targetRevision: main
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+EOF
+----
+
+The GitOps Application will deploy the following Inference components:
+
+* *Namespace*: An `inference` namespace that isolates all AI model serving resources from other system components.
+* *ServingRuntime*: OpenVINO Model Server configuration supporting multiple model formats including OpenVINO IR, ONNX, TensorFlow, PaddlePaddle, and PyTorch. This runtime provides optimized edge inference with both REST and gRPC protocol support.
+* *Service and Route*: Network components that expose inference endpoints for external access, enabling the Battery Monitoring System to query AI models through REST APIs.
+* *Service Account*: Kubernetes service account configured with S3 access permissions to retrieve models from MinIO storage.
+* *InferenceServices*: Two specialized inference services that load and serve AI models from MinIO storage:
+  - Stress detection service for identifying battery stress conditions
+  - Time-to-failure service for predicting remaining battery life
+
+These components work together to provide a complete AI model serving solution that can load models from MinIO storage and serve real-time predictions for our battery monitoring system.
+
+Monitor the deployment progress to ensure all components are properly deployed:
+
+[source,bash]
+----
+watch oc get pods -n inference
+----
+
+When all pods show `Running` status, the inference server deployment is complete and ready to serve AI models.
+
+=== Step 4: Access Inference Endpoints
+
+Once deployed, you can access the inference endpoints:
+
+[source,bash]
+----
+# TODO: Add inference endpoint URL and access instructions
+----
+
+The inference server will be ready to serve predictions for both battery stress detection and time-to-failure models.
