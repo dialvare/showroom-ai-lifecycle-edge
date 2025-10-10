@@ -1,0 +1,88 @@
+= Deploying the Battery Monitoring System
+
+In this final section, we will deploy the Battery Monitoring System (BMS) application that brings together all the components we've previously deployed. The BMS serves as the main interface for monitoring battery health in our autonomous vehicle, providing real-time telemetry data visualization and AI-powered predictions.
+
+== Understanding the Battery Monitoring System
+
+The Battery Monitoring System is the central application that orchestrates our entire battery monitoring solution. It connects to the MinIO storage for data persistence, queries the inference services for AI predictions, and provides a comprehensive dashboard for monitoring battery health.
+
+== Deploying BMS using GitOps
+
+We will deploy the Battery Monitoring System using the same GitOps approach, ensuring consistent deployment and management across our edge infrastructure.
+
+=== Step 1: Deploy GitOps Application
+
+Deploy the Battery Monitoring System GitOps application:
+
+[source,yaml]
+----
+oc apply -f - <<EOF
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: battery-simulation
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: bootstrap/battery-simulation/groups/dev
+    repoURL: https://github.com/dialvare/ai-lifecycle-edge.git
+    targetRevision: main
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+EOF
+----
+
+Monitor the deployment progress to ensure all BMS components are properly deployed:
+
+[source,bash]
+----
+watch oc get pods -n battery-simulation
+----
+
+When all pods show `Running` status, the Battery Monitoring System deployment is complete and ready to monitor battery health.
+
+The GitOps Application will deploy the following BMS components:
+
+* *Namespace*: A `battery-simulation` namespace that contains all BMS-related resources, providing isolation for the monitoring system.
+
+* *Battery Simulator*: A Quarkus component that simulates battery behavior and generates realistic telemetry data including voltage, temperature, driving distance, and velocity.
+
+* *MQTT Broker*: A Mosquitto MQTT broker that acts as the central messaging hub, receiving sensor data from the battery simulator and distributing it to other components.
+
+* *Data Processing Components*: Two Quarkus services that process MQTT data:
+  - `mqtt2ws` service that exposes data as WebSocket for the BMS dashboard
+  - `data ingester` service that stores sensor data in InfluxDB time series database
+
+* *InfluxDB*: A time series database that stores historical sensor data for analysis and monitoring.
+
+* *BMS Dashboard*: A web-based dashboard that displays real-time battery telemetry data and AI predictions, accessible from the plant offices.
+
+* *Scheduled Tasks*: Background processes that collect data from InfluxDB and send it to MinIO storage for model retraining.
+
+=== Step 2: Access BMS Dashboards
+
+Once deployed, you can access the Battery Monitoring System dashboard:
+
+[source,bash]
+----
+# TODO: Add BMS dashboard URL and access instructions
+----
+
+The dashboard will display real-time battery telemetry data, AI predictions for stress detection and time-to-failure, and provide alerting capabilities for battery health monitoring.
+
+Also you can access the InfluxDB dashboard where the sensor data es collected and prepared to be sent to the BMS dashbaord.
+
+[source,bash]
+----
+# TODO: Add BMS dashboard URL and access instructions
+----
+
+If you can see data on both dashboards, your autonomous vehicle's battery monitoring system is now fully operational and ready to provide intelligent battery health monitoring during plant operations.

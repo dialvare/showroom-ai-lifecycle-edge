@@ -68,7 +68,7 @@ watch oc get pods -n inference
 
 When all pods show `Running` status, the inference server deployment is complete and ready to serve AI models.
 
-=== Step 4: Access Inference Endpoints
+=== Step 2: Access Inference Endpoints
 
 Once deployed, you can access the inference endpoints:
 
