@@ -44,7 +44,7 @@ Monitor the deployment progress to ensure all BMS components are properly deploy
 
 [source,bash]
 ----
-watch oc get pods -n battery-simulation
+watch oc get pods -n battery-demo
 ----
 
 When all pods show `Running` status, the Battery Monitoring System deployment is complete and ready to monitor battery health.
@@ -63,7 +63,7 @@ The GitOps Application will deploy the following BMS components:
 
 * *InfluxDB*: A time series database that stores historical sensor data for analysis and monitoring.
 
-* *BMS Dashboard*: A web-based dashboard that displays real-time battery telemetry data and AI predictions, accessible from the plant offices.
+* *BMS Dashboard*: A web-based dashboard that displays real-time battery telemetry data and AI predictions.
 
 * *Scheduled Tasks*: Background processes that collect data from InfluxDB and send it to MinIO storage for model retraining.
 
@@ -73,7 +73,7 @@ Once deployed, you can access the Battery Monitoring System dashboard:
 
 [source,bash]
 ----
-# TODO: Add BMS dashboard URL and access instructions
+https://bms-dashboard-microshift-001.apps.cluster-lrq8c.dynamic.redhatworkshops.io
 ----
 
 The dashboard will display real-time battery telemetry data, AI predictions for stress detection and time-to-failure, and provide alerting capabilities for battery health monitoring.
@@ -82,7 +82,12 @@ Also you can access the InfluxDB dashboard where the sensor data es collected an
 
 [source,bash]
 ----
-# TODO: Add BMS dashboard URL and access instructions
+https://influx-db-microshift-001.apps.cluster-lrq8c.dynamic.redhatworkshops.io
 ----
+
+Use the following credentials to log in:
+
+* **Username**: `admin`
+* **Password**: `password`
 
 If you can see data on both dashboards, your autonomous vehicle's battery monitoring system is now fully operational and ready to provide intelligent battery health monitoring during plant operations.
