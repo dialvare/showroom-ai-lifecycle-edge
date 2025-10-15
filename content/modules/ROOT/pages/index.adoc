@@ -19,12 +19,18 @@ a|- Understanding our case
 - Essentials of Edge
 - Explore our design
 
+| Battery Management System | 15min 
+a|- Understand the vehicle infrastructure
+- Deplying MinIO storage and models
+- Deplying Inference servers
+- Deploying the BMS app
+
 | RHOAI configuration | 15min 
 a|- RHOAI installation
 - Datascience projects
 - DataConnections
 
-| Model Training | 15min 
+| Model Re-training | 15min 
 a|- Workbenches
 - Import Notebooks
 - Training our models
@@ -34,21 +40,16 @@ a|- Stress Detection serving
 - Time to Failure serving
 - Querying endpoints
 
-| DataScience Pipelines | 10min 
+| Pipelines Automation | 5min 
 a|- Pipeline server
-- Pipelines automation
-
-| Battery Management System | 10min 
-a|- Understanding BMS app 
-- App dashboard
-- Simulate failure
+- Pipelines execution
+- Pipelines scheduled automation
 
 | Model Monitoring | 5min 
 a|- TrustyAI
 - Bias detection
 - Data drift
 
-| Charging optimization | 15min 
-a|- MicroShift
-- Validate predictions
+| BMS app performance | 15min 
+a|- Test the new models
 |===
