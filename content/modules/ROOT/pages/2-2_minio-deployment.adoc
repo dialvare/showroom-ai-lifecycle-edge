@@ -95,7 +95,7 @@ Once the deployment is complete, you can access the MinIO dashboard through your
 
 [source,bash]
 ----
-https://minio-microshift-001.apps.cluster-lrq8c.dynamic.redhatworkshops.io
+https://minio-microshift-001.{openshift_cluster_ingress_domain}
 ----
 
 Use the following credentials to log in:

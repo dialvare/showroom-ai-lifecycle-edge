@@ -12,7 +12,7 @@ First, establish an `ssh` connection to the bastion host using the command provi
 
 [source,bash]
 ----
-ssh lab-user@ssh.ocpv07.rhdp.net -p 32191
+{bastion_ssh_command}
 ----
 
 When asked for a password, please anter the bastion password provided in the lab credentials.
