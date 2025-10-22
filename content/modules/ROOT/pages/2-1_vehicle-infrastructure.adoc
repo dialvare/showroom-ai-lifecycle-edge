@@ -14,7 +14,8 @@ MicroShift is necessary for our solution because it allows us to:
 - Provide storage and networking capabilities for our edge workloads
 
 To check the status of MicroShift, execute the following command:
-
++
+[.console-input]
 [source,bash]
 ----
 oc get pods -A
