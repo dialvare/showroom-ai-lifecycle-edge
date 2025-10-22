@@ -2,7 +2,7 @@
 
 In this section, we will deploy MinIO storage as the first component within our autonomous vehicle. MinIO will serve as our object storage solution, providing two essential buckets:
 
-* *Data bucket*: Stores the telemetry data collected from vehicle sensors during operational routes
+* *s3-storage bucket*: Stores the telemetry data collected from vehicle sensors during operational routes
 * *Models bucket*: Stores AI models used for battery monitoring - initially base models that we provide, and later the retrained models from our SNO instance. These models are essential for our inference component to access and serve them for real-time battery stress detection and time-to-failure prediction.
 
 == Deploying MinIO using GitOps
@@ -14,7 +14,8 @@ The first step is to create a GitOps application project that will group all the
 === Step 1: Create GitOps Application Project
 
 Create the following GitOps application project by applying this configuration:
-
++
+[.console-input]
 [source,yaml]
 ----
 oc apply -f - <<EOF
@@ -40,14 +41,15 @@ EOF
 Now that we have the project, we will create our GitOps Application that will be responsible for checking the files in our GitOps repository and deploying the different components necessary for MinIO.
 
 Apply the GitOps Application:
-
++
+[.console-input]
 [source,yaml]
 ----
 oc apply -f - <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minio-storage-microshift
+  name: minio-microshift
   namespace: openshift-gitops
 spec:
   destination:
@@ -55,8 +57,8 @@ spec:
     namespace: ''
     server: https://kubernetes.default.svc
   source:
-    path: bootstrap/minio-storage-microshift/groups/dev
-    repoURL: https://github.com/dialvare/ai-lifecycle-edge.git
+    path: bootstrap/minio-microshift/groups/dev
+    repoURL: https://github.com/rhpds/ai-lifecycle-edge-gitops.git
     targetRevision: main
   sources: []
   project: default
@@ -81,7 +83,8 @@ The GitOps Application will deploy the following components for MinIO storage:
   - Time-to-failure model for predicting remaining battery life
 
 To verify that the deployment is progressing correctly, you can monitor the status of the pods:
-
++
+[.console-input]
 [source,bash]
 ----
 watch oc get pods -n minio
@@ -92,7 +95,8 @@ When all pods show `Running` or `Completed` status, it means that MinIO has been
 === Step 3: Access MinIO Dashboard
 
 Once the deployment is complete, you can access the MinIO dashboard through your web browser:
-
++
+[.console-input]
 [source,bash]
 ----
 https://minio-microshift-001.{openshift_cluster_ingress_domain}
@@ -103,7 +107,7 @@ Use the following credentials to log in:
 * **Username**: `minio`
 * **Password**: `minio123`
 
-The dashboard will allow you to verify that both buckets (`data` and `models`) have been created and that the baseline AI models have been properly downloaded and stored.
+The dashboard will allow you to verify that both buckets (`s3-storage` and `models`) have been created and that the baseline AI models have been properly downloaded and stored.
 
 
 

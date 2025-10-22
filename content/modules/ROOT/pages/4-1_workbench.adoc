@@ -12,14 +12,12 @@ image::3-1_create-workbench.png[Create Workbench]
 . Complete the fields as follows. You will see that there are plenty of different configurations depending on your model and environment specifications:
  ** *Name*: Type your preferred name. I will use `model-training`.
  ** *Image selection*: the election will depend on the model requirements. Click on View package information to see the packages included. Our model will use `TensorFlow`.
- ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2024.2` version.
+ ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2025.1` version.
  ** *Container size*: we can select the resources assigned depending on our hardware: number of CPUs, memory, and request capacity of the container. In this case, the `Small` size is enough.
- ** Check the *Create new persistent storage* box.
-  ** *Name*: Type any desired name for the persistent volume. For example, `model-training`.
-  ** *Persistent storage size*: Specify the desired capacity for the volume. I will start with `20GB`, but we can always expand it if necessary.
+ ** Make sure a persisten volume called `model-training-storage` is going to be created with `20GB`.
  ** Under connections, select *Attach existing connections*. Verify that the `s3-storage` connection is selected and click *Attach*.
 . Review your configuration and press *Create workbench*. This last step will trigger the workbench creation.
-. You will be automatically redirected to another page where you can track the workbench deployment process. Wait until the _Status_ shows *Running* and click *Open*.
+. You will be automatically redirected to another page where you can track the workbench deployment process. Wait until the _Status_ shows *Running* and click *model-training*.
 
 image::3-1_workbench.png[Workbench status]
 

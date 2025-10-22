@@ -9,18 +9,20 @@ To access the autonomous vehicle's infrastructure, you need to connect through t
 === Step 1: Connect to the Bastion Host
 
 First, establish an `ssh` connection to the bastion host using the command provided in your environment credentials. Something like:
-
++
+[.console-input]
 [source,bash]
 ----
 {bastion_ssh_command}
 ----
 
-When asked for a password, please anter the bastion password provided in the lab credentials.
+When asked for a password, please anter the bastion password provided in the lab credentials. In this case: {bastion_ssh_password}
 
 === Step 2: Access the Vehicle's Virtual Machine
 
 Once connected to the bastion, use `virtctl` to access the autonomous vehicle's virtual machine. The command should look similar to the following one:
-
++
+[.console-input]
 [source,bash]
 ----
 virtctl ssh cloud-user@microshift.microshift-001 --identity-file=/home/lab-user/.ssh/microshift-001
