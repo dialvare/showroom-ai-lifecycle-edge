@@ -85,7 +85,7 @@ The GitOps Application will deploy the following components for MinIO storage:
 To verify that the deployment is progressing correctly, you can monitor the status of the pods:
 
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
 watch oc get pods -n minio
 ----
@@ -97,7 +97,7 @@ When all pods show `Running` or `Completed` status, it means that MinIO has been
 Once the deployment is complete, you can access the MinIO dashboard through your web browser:
 
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
 https://minio-microshift-001.{openshift_cluster_ingress_domain}
 ----
