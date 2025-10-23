@@ -18,7 +18,7 @@ We will deploy the inference server using the same GitOps approach as MinIO, ens
 === Step 1: Deploy GitOps Application
 
 Deploy the inference server GitOps application:
-+
+
 [.console-input]
 [source,yaml]
 ----
@@ -59,9 +59,9 @@ The GitOps Application will deploy the following Inference components:
 These components work together to provide a complete AI model serving solution that can load models from MinIO storage and serve real-time predictions for our battery monitoring system.
 
 Monitor the deployment progress to ensure all components are properly deployed:
-+
+
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 watch oc get pods -n inference
 ----
@@ -71,9 +71,9 @@ When all pods show `Running` status, the inference server deployment is complete
 === Step 2: Access Inference Endpoints
 
 Once deployed, you can check the inference endpoints by running: 
-+
+
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 oc get inferenceservice -n inference
 ----

@@ -3,9 +3,9 @@
 The fundamental piece and operational hub will be the Red Hat OpenShift AI platform, running in our Single Node OpenShift. The RHOAI operator provides data scientists and developers the possibility to work within a common platform where they can collaborate during the entire model lifecycle, making use of both containerization perks and several machine learning and data analytics capabilities.
 
 . Open the *OpenShift Web Console* and log in using the credentials provided with in the lab instructions. The Console URL is:
-+
+
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 {openshift_cluster_console_url}
 ----

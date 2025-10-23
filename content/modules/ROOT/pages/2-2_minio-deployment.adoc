@@ -14,7 +14,7 @@ The first step is to create a GitOps application project that will group all the
 === Step 1: Create GitOps Application Project
 
 Create the following GitOps application project by applying this configuration:
-+
+
 [.console-input]
 [source,yaml]
 ----
@@ -41,7 +41,7 @@ EOF
 Now that we have the project, we will create our GitOps Application that will be responsible for checking the files in our GitOps repository and deploying the different components necessary for MinIO.
 
 Apply the GitOps Application:
-+
+
 [.console-input]
 [source,yaml]
 ----
@@ -83,7 +83,7 @@ The GitOps Application will deploy the following components for MinIO storage:
   - Time-to-failure model for predicting remaining battery life
 
 To verify that the deployment is progressing correctly, you can monitor the status of the pods:
-+
+
 [.console-input]
 [source,bash]
 ----
@@ -95,7 +95,7 @@ When all pods show `Running` or `Completed` status, it means that MinIO has been
 === Step 3: Access MinIO Dashboard
 
 Once the deployment is complete, you can access the MinIO dashboard through your web browser:
-+
+
 [.console-input]
 [source,bash]
 ----

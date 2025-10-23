@@ -9,9 +9,9 @@ To access the autonomous vehicle's infrastructure, you need to connect through t
 === Step 1: Connect to the Bastion Host
 
 First, establish an `ssh` connection to the bastion host using the command provided in your environment credentials. Something like:
-+
+
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 {bastion_ssh_command}
 ----
@@ -21,9 +21,9 @@ When asked for a password, please anter the bastion password provided in the lab
 === Step 2: Access the Vehicle's Virtual Machine
 
 Once connected to the bastion, use `virtctl` to access the autonomous vehicle's virtual machine. The command should look similar to the following one:
-+
+
 [.console-input]
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 virtctl ssh cloud-user@microshift.microshift-001 --identity-file=/home/lab-user/.ssh/microshift-001
 ----
@@ -32,7 +32,7 @@ virtctl ssh cloud-user@microshift.microshift-001 --identity-file=/home/lab-user/
 
 After connecting to the autonomous vehicle, you'll need to expand the disk size to accommodate the required storage for the Battery Monitoring System workloads that will be deployed. Run the following commands to expand the disk storage:
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 sudo growpart /dev/vda 2
 sudo pvresize /dev/vda2

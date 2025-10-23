@@ -5,7 +5,7 @@
 When we train an AI/ML model, a crutial step is to make the data accessible during the training process. Also, once we obtain the new model we need a place where to store it so it can be served. Therefore, some kind of storage is needed. We have seen that our node comes with MinIO deployed, so the next thing will be creating a bucket. Buckets are similar to folders in a filesystem and are used to organize objects.
 
 . First, we need to access the MinIO Console. Open a new tab in your browser and access the following URL:
-+
+
 [.console-input]
 [source,sh]
 ----
