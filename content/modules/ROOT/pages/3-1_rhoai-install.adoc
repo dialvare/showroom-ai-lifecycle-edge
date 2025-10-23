@@ -5,7 +5,7 @@ The fundamental piece and operational hub will be the Red Hat OpenShift AI platf
 . Open the *OpenShift Web Console* and log in using the credentials provided with in the lab instructions. The Console URL is:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 {openshift_cluster_console_url}
 ----

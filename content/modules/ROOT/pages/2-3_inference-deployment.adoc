@@ -61,7 +61,7 @@ These components work together to provide a complete AI model serving solution t
 Monitor the deployment progress to ensure all components are properly deployed:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 watch oc get pods -n inference
 ----
@@ -73,7 +73,7 @@ When all pods show `Running` status, the inference server deployment is complete
 Once deployed, you can check the inference endpoints by running: 
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 oc get inferenceservice -n inference
 ----

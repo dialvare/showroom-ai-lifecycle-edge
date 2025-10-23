@@ -16,14 +16,14 @@ MicroShift is necessary for our solution because it allows us to:
 To check the status of MicroShift, execute the following command:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 oc get pods -A
 ----
 
 You should see various pods in `Running` status across different namespaces:
 
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 NAMESPACE                  NAME                                         READY   STATUS      RESTARTS        AGE
 kube-system                csi-snapshot-controller-74795dc54f-lp9tf     1/1     Running     0               1d

@@ -13,7 +13,7 @@ image::3-2_git-import.png[Git import]
 . In the new menu, select the *Clone repository* option. You will be asked to type the URL to the repo. Copy and paste this one:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 https://github.com/rhpds/ai-lifecycle-edge-gitops.git
 ----

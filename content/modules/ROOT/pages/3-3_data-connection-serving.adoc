@@ -5,7 +5,7 @@
 As we will see later, we will need object storage to store the data used for training the models and for saving them afterward. As we saw at the beginning, MinIO is already configured on our node and should be accesed through:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 https://minio-ui-minio.{openshift_cluster_ingress_domain}
 ----

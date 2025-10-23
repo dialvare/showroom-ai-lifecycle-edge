@@ -44,7 +44,7 @@ EOF
 Monitor the deployment progress to ensure all BMS components are properly deployed:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 watch oc get pods -n battery-demo
 ----
@@ -74,7 +74,7 @@ The GitOps Application will deploy the following BMS components:
 Once deployed, you can access the Battery Monitoring System dashboard:
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
 ----
@@ -84,7 +84,7 @@ The dashboard will display real-time battery telemetry data, AI predictions for 
 Also you can access the InfluxDB dashboard where the sensor data es collected and prepared to be sent to the BMS dashbaord.
 
 [.console-input]
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 https://influx-db-microshift-001.{openshift_cluster_ingress_domain}
 ----
