@@ -5,20 +5,16 @@
 Usually, model development and training is the most time-consuming part. On JupiterLab we can use Notebooks to develp and run the code needed to generate our AI models. In this demo, instead of creating the Notebooks and the code on our own, we are going to clone this link:https://github.com/rhpds/ai-lifecycle-edge-gitops.git[GitHub repository] that contains the Notebooks and adititonal resources that we will need later.
 
 . Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There, in the third position you will find the *Git* icon. Click it.
-
++
 image::3-2_git-import.png[Git import]
 
-[start=2]
-
 . In the new menu, select the *Clone repository* option. You will be asked to type the URL to the repo. Copy and paste this one:
-
++
 [.console-input]
 [source,bash,subs="attributes+"]
 ----
 https://github.com/rhpds/ai-lifecycle-edge-gitops.git
 ----
-
-[start=3]
 
 . Click *Clone* to start pulling the contents.
 

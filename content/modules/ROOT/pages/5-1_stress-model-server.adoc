@@ -11,10 +11,8 @@ In this section you will learn how to set up Red Hat OpenShift AI on Single Node
 . Go back to our *Red Hat OpenShift AI Dashboard* and make sure you are still inside the `ai-edge-project` project.
 . Navigate to the *Models* tab.
 . Locate the Single-model serving platform option and choose *Select single-model*.
-
++
 image::4-1_create-serving.png[Select Single Model Serving]
-
-[start=4]
 
 . This options deploys an associated model server for each model. Click on *Deploy model*.
 . Complete the following fields in the form:

@@ -4,10 +4,8 @@ Inside the new project, we can create different components. One of them, and pro
 
 . There are different tabs inside our project page. Click on *Workbenches*.
 . On there, select the *Create workbench* button to open the configuration window.
-
++
 image::3-1_create-workbench.png[Create Workbench]
-
-[start=3]
 
 . Complete the fields as follows. You will see that there are plenty of different configurations depending on your model and environment specifications:
  ** *Name*: Type your preferred name. I will use `model-training`.
@@ -18,8 +16,7 @@ image::3-1_create-workbench.png[Create Workbench]
  ** Under connections, select *Attach existing connections*. Verify that the `s3-storage` connection is selected and click *Attach*.
 . Review your configuration and press *Create workbench*. This last step will trigger the workbench creation.
 . You will be automatically redirected to another page where you can track the workbench deployment process. Wait until the _Status_ shows *Running* and click *model-training*.
-
++
 image::3-1_workbench.png[Workbench status]
 
-[start=7]
 . A new tab will open. Enter again your OpenShift credentials to authenticate to the workbench's JupyterLab platform.

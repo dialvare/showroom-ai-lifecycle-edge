@@ -3,14 +3,15 @@
 Data Science Projects in RHOAI are used to organize users and AI-application related resources around a single shared space.
 
 . Make sure you are in the *Red Hat OpenShift AI Dashboard*. Remember that it can be accessed trough the OpenShift Web Console or directly on this URL:
-
++
 [.console-input]
 [source,bash,subs="attributes+"]
 ----
 https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}
 ----
-
-[start=2]
++
+* *User*: {openshift_cluster_admin_username}
+* *Password*: {openshift_cluster_admin_password}
 
 . Start by locating the *Data Science Projects* tab on the menu on the left.
 . Click the *Create project* button. A new window will pop-up.
