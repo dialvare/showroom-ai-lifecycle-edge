@@ -76,7 +76,7 @@ The GitOps Application will deploy the following components for MinIO storage:
 * *Service and Route*: A Kubernetes service and route that expose the MinIO dashboard, allowing us to access and manage the storage through a web interface.
 * *Persistent Volume Claim (PVC)*: Provides persistent storage space that will be used by the MinIO buckets to store both sensor data and AI models.
 * *Bucket Creation Script*: An initialization script that automatically creates the required buckets:
-  - `data` bucket for storing telemetry data from vehicle sensors
+  - `s3-storage` bucket for storing telemetry data from vehicle sensors
   - `models` bucket for storing AI models (both baseline and retrained models)
 * *Model Download Script*: A script that downloads and stores our two baseline AI models from the GitHub repository:
   - Stress detection model for identifying battery stress conditions
@@ -104,8 +104,8 @@ https://minio-microshift-001.{openshift_cluster_ingress_domain}
 
 Use the following credentials to log in:
 
-* **Username**: `minio`
-* **Password**: `minio123`
+* *Username*: `minio`
+* *Password*: `minio123`
 
 The dashboard will allow you to verify that both buckets (`s3-storage` and `models`) have been created and that the baseline AI models have been properly downloaded and stored.
 

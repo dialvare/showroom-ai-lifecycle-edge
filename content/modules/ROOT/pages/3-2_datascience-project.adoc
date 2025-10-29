@@ -17,5 +17,5 @@ https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domai
 . Click the *Create project* button. A new window will pop-up.
 . There you can type your preferred project name. In my case, the *Name* will be `ai-edge-project`. Optionally, you can add a description.
 . Then, click *Create*. You will be redirected to the project dashboard page. With this, a new namespace called `ai-edge-project` will be created in your OpenShift node.
-
++
 image::2-2_project.png[Data Science Project]

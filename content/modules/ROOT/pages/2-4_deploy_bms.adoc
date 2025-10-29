@@ -91,7 +91,7 @@ https://influx-db-microshift-001.{openshift_cluster_ingress_domain}
 
 Use the following credentials to log in:
 
-* **Username**: `admin`
-* **Password**: `password`
+* *Username*: `admin`
+* *Password*: `password`
 
 Check the data stream by navigating to *Explore* in menu at the left and make sure you check the *battery_data* filter. Then click *Submit*. If you can see data on both dashboards, your autonomous vehicle's battery monitoring system is now fully operational and ready to provide intelligent battery health monitoring during plant operations.
