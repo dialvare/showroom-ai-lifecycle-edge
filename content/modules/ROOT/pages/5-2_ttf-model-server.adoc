@@ -13,6 +13,7 @@ It's time to repeat the same steps for the Time to Failure AI model. The steps w
  ** *Model framework*: Our model was saved in `openvino_ir - opset13` format.
  ** *Model server replicas*: Keep `1` for the number of pods.
  ** *Model server size*: Assign `Small` to the server size.
+ ** Check the *Model route* and *Token authentication* boxes.
  ** Check the *Existing data connection* box.
 ** *Connection*: Select again the `s3-storage` DataConnection.
 ** *Path*: Our Time to Failure model was saved in `models/time-to-failure/`.
