@@ -6,7 +6,6 @@ The Inference endpoint enables you to interact with the model and return predict
 . Locate in the `notebooks` folder the *08_query_models.ipynb* notebook. 
 . Run the first cell to interact with the Stress Detection model.
 . If everything is correctly configured, we should get a response based on the input data.
-
 . Now run the second cell to test the inference endpoint for the Time to Failure model.
 . Again, we should see a response with the predicted time to failure.
 

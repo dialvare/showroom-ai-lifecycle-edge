@@ -22,10 +22,11 @@ image::4-1_create-serving.png[Select Single Model Serving]
  ** *Model framework*: Select the format in which the model was saved. Our model was saved in `openvino_ir - opset13` format.
  ** *Model server replicas*: Choose the number of pods to serve the model. Just `1` should be okay in our case.
  ** *Model server size*: Assign resources to the server. Our model is quite simple, so `Small` will be enough.
- ** Check the *Model route* and *Token authentication* boxes to make the models externally available.
+ ** Check the *Model route* box to make the model externally available.
+ ** Uncheck the *Token authentication* box.
  ** Check the *Existing data connection* box, if it is not already selected.
  ** *Connection*: Here the `s3-storage` DataConnection should appear.
- ** *Path*: Indicate the path to your model location in the S3 bucket. That's: `models/stress-detection/`. We didn't specify the full path to the model because KServe will automatically pull it from the _/1/_ subdirectory in the path specified.
+ ** *Path*: Indicate the path to your model location in the S3 bucket. That's: `models/serving/stress-detection/`. We didn't specify the full path to the model because KServe will automatically pull it from the _/1/_ subdirectory in the path specified.
 . When configured, click on *Deploy*.
 
 At that moment, new ServingRuntime and InferenceService resources will be created in your node. In the Models tab, your new Model Service should appear. Wait until you see a *green checkmark* in the Status column. Also, check the *Internal endpoint details* to show the model inference API where to make requests to.

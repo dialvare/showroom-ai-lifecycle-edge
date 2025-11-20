@@ -10,7 +10,7 @@ image::3-1_create-workbench.png[Create Workbench]
 . Complete the fields as follows. You will see that there are plenty of different configurations depending on your model and environment specifications:
  ** *Name*: Type your preferred name. I will use `model-training`.
  ** *Image selection*: the election will depend on the model requirements. Click on View package information to see the packages included. Our model will use `Jupyter | TensorFlow | CUDA | Python 3.12`.
- ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2025.1` version.
+ ** *Version selection*: The recommendation is to use the latest package versions. That will be the `2025.2` version.
  ** *Container size*: we can select the resources assigned depending on our hardware: number of CPUs, memory, and request capacity of the container. In this case, the `Small` size is enough.
  ** Make sure a persisten volume called `model-training-storage` is going to be created with `20GB`.
  ** Under connections, select *Attach existing connections*. Verify that the `s3-storage` connection is selected and click *Attach*.
