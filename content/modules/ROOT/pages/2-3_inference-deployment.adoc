@@ -2,10 +2,10 @@
 
 In this section, we will deploy the AI model inference server that will serve our battery monitoring models. The inference server is a critical component that enables real-time AI predictions for battery stress detection and time-to-failure estimation.
 
-The inference server is responsible for loading and serving our AI models to make predictions based on real-time sensor data. Red Hat OpenShift AI Self-Managed provides a single-model serving platform based on the KServe component of Kubernetes. The inference server is necessary because:
+The inference server is responsible for loading and serving our AI models to make predictions based on real-time sensor data. Red Hat OpenShift AI Self-Managed provides a single-model serving platform based on the KServe component of Kubernetes. The inference server is necessary for:
 
 * *Real-time predictions*: It provides low-latency inference capabilities for our battery monitoring system, enabling immediate responses to sensor data
-* *Model serving*: It loads and manages our AI models (stress detection and time-to-failure) from the MinIO storage
+* *Model serving*: It loads and manages our AI models (_stress-detection_ and _time-to-failure_) from the MinIO storage
 * *API endpoints*: It exposes RESTful APIs that our Battery Monitoring System can query for predictions
 * *Resource efficiency*: It optimizes model loading and inference performance in the constrained edge environment
 
@@ -53,7 +53,7 @@ The GitOps Application will deploy the following Inference components:
 * *Service and Route*: Network components that expose inference endpoints for external access, enabling the Battery Monitoring System to query AI models through REST APIs.
 * *Service Account*: Kubernetes service account configured with S3 access permissions to retrieve models from MinIO storage.
 * *InferenceServices*: Two specialized inference services that load and serve AI models from MinIO storage:
-  - Stress detection service for identifying battery stress conditions
+  - Stress-detection service for identifying battery stress conditions
   - Time-to-failure service for predicting remaining battery life
 
 These components work together to provide a complete AI model serving solution that can load models from MinIO storage and serve real-time predictions for our battery monitoring system.
@@ -78,4 +78,11 @@ Once deployed, you can check the inference endpoints by running:
 oc get inferenceservice -n inference
 ----
 
-The inference server will be ready to serve predictions for both battery stress detection and time-to-failure models.
+The inference server will be ready to serve predictions for both battery stress-detection and time-to-failure models.
+
+[source,bash,subs="attributes+"]
+----
+NAME               URL                                                             READY   PREV   LATEST   PREVROLLEDOUTREVISION   LATESTREADYREVISION   AGE
+stress-detection   http://stress-detection-predictor.inference.svc.cluster.local   True                                                                  44s
+time-to-failure    http://time-to-failure-predictor.inference.svc.cluster.local    True                                                                  43s
+----

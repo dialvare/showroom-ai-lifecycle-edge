@@ -50,6 +50,6 @@ a|- TrustyAI
 - Bias detection
 - Data drift
 
-| BMS app performance | 15min 
+| Battery Monitoring System | 15min 
 a|- Test alerting system
 |===
