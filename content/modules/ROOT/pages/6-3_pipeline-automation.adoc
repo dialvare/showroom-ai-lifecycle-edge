@@ -1,0 +1,51 @@
+= Pipelines scheduled automation
+
+Our machine learning models need to adapt to evolving data patterns to maintain their accuracy and relevance. By scheduling our pipeline to run automatically every 10 minutes, we ensure that both the Stress Detection and Time to Failure Prediction models are continuously retrained with the latest battery data collected from the BMS application. This automated approach eliminates manual intervention, reduces the risk of model drift, and guarantees that our predictive models always reflect the most current battery behavior patterns.
+
+== Schedule recurring execution
+
+Now let's configure the pipeline to execute automatically:
+
+. Once the pipeline is imported, click on the blue *Actions* button in the top-right corner. 
+. Select *Create schedule* from the dropdown menu.
+. Fill in the schedule configuration form:
+ ** *Name*: `Scheduled run`
+ ** *Trigger type*: Select *Periodic*
+ ** *Run every*: `10` `minutes`
+. Scroll down and verify that the *Model Retraining* pipeline has been automatically selected.
+. Check that the *Parameters* match the following values:
++
+[cols="1,1", subs="attributes+"]
+|===
+|Parameter |Value
+
+|aws_access_key_id
+|minio
+
+|aws_s3_bucket
+|s3-storage
+
+|aws_s3_endpoint
+|http://minio-service.minio.svc.cluster.local:9000
+
+|aws_secret_access_key
+|minio123
+
+|influxdb_bucket
+|bms
+
+|influxdb_org
+|redhat
+
+|influxdb_token
+|admin_token
+
+|influxdb_url
+|https://influx-db-microshift-001.{openshift_cluster_ingress_domain}/
+|===
+
+. When all parameters are correctly configured, click *Create schedule*.
+
+The pipeline will now execute automatically every 10 minutes, continuously improving your models with fresh battery data. Come back after 10 minutes and the first scheduled run should be underway. Once it finishes, all the steps should have a green tick like the one shown below:
+
+image::6-2_pipeline-complete.png[Pipeline finished execution]

@@ -51,5 +51,5 @@ a|- TrustyAI
 - Data drift
 
 | BMS app performance | 15min 
-a|- Test the new models
+a|- Test alerting system
 |===
