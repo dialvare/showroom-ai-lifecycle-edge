@@ -10,14 +10,14 @@
 ** xref:2-1_vehicle-infrastructure.adoc[2.1 Vehicle infra]
 ** xref:2-2_minio-deployment.adoc[2.2 Deploying MinIO]
 ** xref:2-3_inference-deployment.adoc[2.3 Serving models]
-** xref:2-4_deploy_bms.adoc[2.4 Deploying the BMS app]
+** xref:2-4_deploy-bms.adoc[2.4 Deploying the BMS app]
 
 * 3. RHOAI configuration
 ** xref:3-1_rhoai-install.adoc[3.1 RHOAI installation]
 ** xref:3-2_datascience-project.adoc[3.2 Datascience projects]
 ** xref:3-3_data-connection-serving.adoc[3.3 DataConnections]
 
-* 4. Model Training
+* 4. Model Re-training
 ** xref:4-1_workbench.adoc[4.1 Workbenches]
 ** xref:4-2_importing-notebooks.adoc[4.2 Import Notebooks]
 ** xref:4-3_running-notebooks.adoc[4.3 Training our models]
@@ -29,9 +29,13 @@
 
 * 6. DataScience Pipelines
 ** xref:6-1_pipeline-server.adoc[6.1 Pipeline server]
-** xref:6-2_running-pipelines.adoc[6.2 Pipelines automation]
+** xref:6-2_pipeline-execution.adoc[6.2 Pipeline execution]
+** xref:6-3_pipeline-automation.adoc[6.3 Pipeline automation]
 
 * 7. Model Monitoring
 ** xref:7-1_trustyai.adoc[7.1 TrustyAI]
-** xref:7-2_TODO_bias.adoc[7.2 Detect bias]
-** xref:7-3_TODO_drift.adoc[7.3 Data drift]
+** xref:7-2_TODO-bias.adoc[7.2 Detect bias]
+** xref:7-3_TODO-drift.adoc[7.3 Data drift]
+
+* 8. Battery Monitoring System
+** xref:8-1_TODO-test-alerts.adoc[8.1 Testing alerts]

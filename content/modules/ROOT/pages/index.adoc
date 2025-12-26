@@ -19,11 +19,11 @@ a|- Understanding our case
 - Essentials of Edge
 - Explore our design
 
-| Battery Management System | 15min 
+| Autonomous Vehicle | 15min 
 a|- Understand the vehicle infrastructure
 - Deplying MinIO storage and models
 - Deplying Inference servers
-- Deploying the BMS app
+- Deploying the Battery Monitoring System
 
 | RHOAI configuration | 15min 
 a|- RHOAI installation
