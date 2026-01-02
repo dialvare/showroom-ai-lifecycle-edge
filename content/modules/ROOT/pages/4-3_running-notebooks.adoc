@@ -24,5 +24,4 @@ At this point, you can follow the instructions contained in each Notebook. Those
 https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
 ----
 
-
 Come back here when you run all of them.
