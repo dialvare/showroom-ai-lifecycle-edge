@@ -13,21 +13,21 @@ The fundamental piece and operational hub will be the Red Hat OpenShift AI platf
 * *User*: {openshift_cluster_admin_username}
 * *Password*: {openshift_cluster_admin_password}
 
-* Navigate to the *Operators* tab on the left panel. Then select *OperatorHub*.
-* Type `OpenShift AI` to search the item in the operators' catalog.
-* Select the *Red Hat OpenShift AI* operator and click on *Install*. The most recent version will be displayed by default.
-* The operator will create the `redhat-ods-operator` project. Review the rest of the parameters and press *Install* to start the operator installation.
-* When the installation finishes, we need to configure the DataScienceCluster custom resource. Select *Create DataScienceCluster*
-* Once in the configuration page, scroll down and click *Components*. Here you can see a list of all the components that can be enabled/disabled from Red Hat OpenShift AI. It's on this step when we enable the different components. Reproduce the following setup:
+. Navigate to the *Operators* tab on the left panel. Then select *OperatorHub*.
+. Type `OpenShift AI` to search the item in the operators' catalog.
+. Select the *Red Hat OpenShift AI* operator and click on *Install*. The most recent version will be displayed by default.
+. The operator will create the `redhat-ods-operator` project. Review the rest of the parameters and press *Install* to start the operator installation.
+. When the installation finishes, we need to configure the DataScienceCluster custom resource. Select *Create DataScienceCluster*
+. Once in the configuration page, scroll down and click *Components*. Here you can see a list of all the components that can be enabled/disabled from Red Hat OpenShift AI. It's on this step when we enable the different components. Reproduce the following setup:
  ** Locate and select the *kserve* component. Unless otherwise specified, the default deployment mode used by kserve will be Serverless. Change the *defaultDeploymentMode* to *RawDeployment* and verify that the *managementState* shows *Managed*.
  ** Also, under *serving*, we need to modify the KNative-Serving stack used for model serving. As mentioned before, the RawDeployment mode does not use KNative. Therefore, we need to switch the *managementState* to *Removed*.
  ** Finally, scroll down to the *trustyAI* configuration and enable the component by switching again the *managementState* field to *Managed*.
-* The configuration should look like this:
+. The configuration should look like this:
 +
 image::3-1_rhoai-kserve-config.png[Kserve configuration]
 
-* Keep the rest of the default values and press *Create*.
-* Wait for the _Phase_ to become _Ready_. This will mean that the operator is successfully configured and can be used.
+. Keep the rest of the default values and press *Create*.
+. Wait for the _Phase_ to become _Ready_. This will mean that the operator is successfully configured and can be used.
 
 Now, we should be able to access the OpenShift AI Web Console. On the right side of the top navigation bar, you will find a square icon formed by 9 smaller squares. Click it and select *Red Hat OpenShift AI* from the dropdown menu:
 

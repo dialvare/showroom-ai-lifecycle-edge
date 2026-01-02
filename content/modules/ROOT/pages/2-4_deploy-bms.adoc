@@ -58,7 +58,7 @@ The GitOps Application will deploy the following BMS components:
 * *Battery Simulator*: A Quarkus component that simulates battery behavior and generates realistic telemetry data including voltage, temperature, driving distance, or velocity.
 * *MQTT Broker*: A Mosquitto MQTT broker that acts as the central messaging hub, receiving sensor data from the battery simulator and distributing it to other components.
 * *Data Processing Components*: Two Quarkus services that process MQTT data:
-  - _mqtt2ws service that exposes data as WebSocket for the BMS dashboard
+  - _mqtt2ws_ service that exposes data as WebSocket for the BMS dashboard
   - _data ingester_ service that stores sensor data in InfluxDB time series database
 * *InfluxDB*: A time series database that stores historical sensor data for analysis and monitoring.
 * *BMS Dashboard*: A web-based dashboard that displays real-time battery telemetry data and AI predictions.
