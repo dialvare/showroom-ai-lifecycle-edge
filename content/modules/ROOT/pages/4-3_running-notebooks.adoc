@@ -1,18 +1,28 @@
 = Creating our firsts AI models
 
-Now it's time to create, train and store our firsts AI models. As we saw before, we will use the Notebooks that we just imported for it. To do so, navigate to the *notebooks* folder. All of them are ordered as shown below:
+Now it's time to create, train and store our firsts AI models. We will use the Notebooks that we just imported for it. To do so, navigate to the `ai-lifecycle-edge-gitops` > `notebooks` > `training` folder. All of them are ordered as shown below:
 
-* *01_retrieve_influx_data.ipynb*: Retrieves the battery data from InfluxDB and saves it.
-* *02_prepare_data.ipynb*: Modifies the raw dataset to make them available for training.
-* *03_bms_stress_training.ipynb*: Trains the Stress Detection model and saves it localy.
-* *04_predict_stress.ipynb*: Validates the Stres Detection model performance with new data.
-* *05_bms_ttf_training.ipynb*: Trains the Time to Failure model and saves it localy.
-* *06_predict_ttf.ipynb*: Validates the Time to Failure model performance with new data.
-* *07_save_models.ipynb*: Uploads the new models to the s3 MinIO bucket.
-* *08_query_models.ipynb*: Used in Module 4 to test and query the inference endpoints. 
+*IMAGE HERE*
+
+* *01_retrieve-influx-data.ipynb*: Retrieves the battery data from InfluxDB and saves it.
+* *02_prepare-data.ipynb*: Modifies the raw dataset to make them available for training.
+* *03_bms-stress-training.ipynb*: Trains the Stress Detection model and saves it localy.
+* *04_predict-stress.ipynb*: Validates the Stres Detection model performance with new data.
+* *05_bms-ttf-training.ipynb*: Trains the Time to Failure model and saves it localy.
+* *06_predict-ttf.ipynb*: Validates the Time to Failure model performance with new data.
+* *07_save-models.ipynb*: Uploads the new models to the s3 MinIO bucket.
 
 To run the Notebook, first open in order each file and press the *Play* button at the top to manually run each cell or the *Double Play* icon to run the entire file.
 
-image::3-3_run-notebooks.png[Run Notebooks]
+image::4-3_run-notebooks.png[Run Notebooks]
 
-At this point, you can follow the instructions contained in each Notebook. Those will explain each step in detail. Come back here when you run all of them.
+At this point, you can follow the instructions contained in each Notebook. Those will explain each step in detail. Pay attention to some of the variables used during the execution. You will need to replace some of them based on your environment. For example, in the first notebook you will need to replace the InfluxDB URL with yours:
+
+[.console-input]
+[source,bash,subs="attributes+"]
+----
+https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
+----
+
+
+Come back here when you run all of them.

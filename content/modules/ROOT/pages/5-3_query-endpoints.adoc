@@ -10,3 +10,7 @@ The Inference endpoint enables you to interact with the model and return predict
 . Again, we should see a response with the predicted time to failure.
 
 In this section, we have verified that our models are being served from RHOAI and are accessible through the endpoint. Similar to what we did from the Notebook, we will be able to perform queries from our Battery Monitoring System application, but we will explore that later.
+
+
+
+* *query_models.ipynb*: Used in Module 5 to test and query the inference endpoints. 

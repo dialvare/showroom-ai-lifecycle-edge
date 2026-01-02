@@ -1,12 +1,10 @@
-= Importing and navigating through Notebooks
+= Importing Notebooks
 
-== Clone the repository
-
-Usually, model development and training is the most time-consuming part. On JupiterLab we can use Notebooks to develp and run the code needed to generate our AI models. In this demo, instead of creating the Notebooks and the code on our own, we are going to clone this link:https://github.com/rhpds/ai-lifecycle-edge-gitops.git[GitHub repository] that contains the Notebooks and adititonal resources that we will need later.
+Usually, model development and training is the most time-consuming part. On JupyterLab we can use Notebooks to develp and run the code needed to generate our AI models. In this demo, instead of creating the Notebooks and the code on our own, we are going to clone this link:https://github.com/rhpds/ai-lifecycle-edge-gitops.git[GitHub repository] that contains the Notebooks and adititonal resources that we will need later.
 
 . Make sure you are in your workbench's JupyterLab platform. There's a toolbar on the left. There, in the third position you will find the *Git* icon. Click it.
 +
-image::3-2_git-import.png[Git import]
+image::4-2_git-import.png[Git import]
 
 . In the new menu, select the *Clone repository* option. You will be asked to type the URL to the repo. Copy and paste this one:
 +
@@ -18,4 +16,6 @@ https://github.com/rhpds/ai-lifecycle-edge-gitops.git
 
 . Click *Clone* to start pulling the contents.
 
-When finished, all the lab folders and resources should appear on the left section, in the *ai-lifecycle-edge-gitops* folder.
+When finished, all the lab folders and resources should appear on the left section, in the `ai-lifecycle-edge-gitops` folder.
+
+image::4-2_imported-folder.png[Imported folder]
