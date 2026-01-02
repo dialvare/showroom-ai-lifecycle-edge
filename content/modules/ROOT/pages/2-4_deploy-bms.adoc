@@ -4,7 +4,7 @@ In this final section, we will deploy the Battery Monitoring System (BMS) applic
 
 == Deploying BMS using GitOps
 
-We will deploy the Battery Monitoring System using the same GitOps approach, ensuring consistent deployment and management across our edge infrastructure.
+Again, we will use GitOps to deploy all the Battery Monitoring System components:
 
 === Step 1: Deploy GitOps Application
 
@@ -45,25 +45,23 @@ Monitor the deployment progress to ensure all BMS components are properly deploy
 watch oc get pods -n battery-demo
 ----
 
-When all pods show `Running` status, the Battery Monitoring System deployment is complete and ready to monitor battery health.
+[NOTE]
+====
+_You can exit the watch command by pressing *Ctrl+C* in your keyboard._
+====
+
+When all pods show `Running` status, the Battery Monitoring System deployment is complete.
 
 The GitOps Application will deploy the following BMS components:
 
-* *Namespace*: A `battery-simulation` namespace that contains all BMS-related resources, providing isolation for the monitoring system.
-
-* *Battery Simulator*: A Quarkus component that simulates battery behavior and generates realistic telemetry data including voltage, temperature, driving distance, and velocity.
-
+* *Namespace*: A _battery-demo_ namespace that contains all BMS-related resources, providing isolation for the monitoring system.
+* *Battery Simulator*: A Quarkus component that simulates battery behavior and generates realistic telemetry data including voltage, temperature, driving distance, or velocity.
 * *MQTT Broker*: A Mosquitto MQTT broker that acts as the central messaging hub, receiving sensor data from the battery simulator and distributing it to other components.
-
 * *Data Processing Components*: Two Quarkus services that process MQTT data:
-  - `mqtt2ws` service that exposes data as WebSocket for the BMS dashboard
-  - `data ingester` service that stores sensor data in InfluxDB time series database
-
+  - _mqtt2ws service that exposes data as WebSocket for the BMS dashboard
+  - _data ingester_ service that stores sensor data in InfluxDB time series database
 * *InfluxDB*: A time series database that stores historical sensor data for analysis and monitoring.
-
 * *BMS Dashboard*: A web-based dashboard that displays real-time battery telemetry data and AI predictions.
-
-* *Scheduled Tasks*: Background processes that collect data from InfluxDB and send it to MinIO storage for model retraining.
 
 === Step 2: Access BMS Dashboards
 
@@ -92,6 +90,12 @@ Use the following credentials to log in:
 * *Username*: `admin`
 * *Password*: `password`
 
-Check the data stream by navigating to *Explore* in menu at the left and make sure you check the *battery_data* filter. Then click *Submit*. If you can see data on both dashboards, your autonomous vehicle's battery monitoring system is now fully operational and ready to provide intelligent battery health monitoring during plant operations.
+To verify the data stream:
+
+* Navigate to *Explore* in the left-hand menu.
+* Select the *bms* and *battery_data* filters.
+* Click *Submit* to execute the query.
+
+Data will start appearing from the right side of the screen. If you recently deployed the BMS app, the data may be difficult to see, so you can adjust the time interval to expand the graph. The following image shows data generated over the last 15 minutes:
 
 image::2-4_influxdb-telemetry.png[Sensor Telemetry in InfluxDB]

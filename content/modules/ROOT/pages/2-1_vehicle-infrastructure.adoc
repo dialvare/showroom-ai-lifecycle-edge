@@ -57,7 +57,6 @@ The following namespaces contain the essential MicroShift components:
 Beyond the core MicroShift functionality, we can see that additional services are enabled:
 
 * *openshift-gitops*: GitOps capabilities are enabled, providing ArgoCD components for continuous deployment and configuration management. This allows us to manage our applications through Git-based workflows.
-
 * *redhat-ods-applications*: The KServe controller manager is running, which provides AI/ML model serving capabilities. This is essential for our battery monitoring system as it will handle the deployment and management of our AI models for stress detection and time-to-failure prediction.
 
 These additional services are crucial for our autonomous vehicle's battery monitoring solution, as they provide the infrastructure needed for both application deployment (GitOps) and AI model serving (KServe).

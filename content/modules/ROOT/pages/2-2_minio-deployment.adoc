@@ -1,9 +1,9 @@
 = Deploying MinIO Storage
 
-In this section, we will deploy MinIO storage as the first component within our autonomous vehicle. MinIO will serve as our object storage solution, providing two essential buckets:
+In this section, we will deploy MinIO storage as the first component within our autonomous vehicle. MinIO will serve as our object storage solution, providing the *inference* bucket, that is used to store the AI models used for battery monitoring - initially base models that we provide, and later the retrained models from our SNO instance. Inside this bucket we have two different folders:
 
-* *data*: Stores the telemetry data collected from vehicle sensors during operational routes
-* *inference*: Stores AI models used for battery monitoring - initially base models that we provide, and later the retrained models from our SNO instance. These models are essential for our inference component to access and serve them for real-time battery stress detection and time-to-failure prediction.
+* *stress-detection*: Stores the AI model used to detect stress conditions in the battery. The base model that will be deployed when the MinIO instance is created comes in an OpenVINO IR format, consisting in two different files (_.xml_ and _.bin_) in the `/stress-detection/1/` path.
+* *time-to-failure*: Stores the AI model used to generate time-to-failure predictions. The base model that will be deployed when the MinIO instance is created comes in an OpenVINO IR format, consisting in two different files (_.xml_ and _.bin_) in the `/time-to-failure/1/` path.
 
 == Deploying MinIO using GitOps
 
@@ -71,15 +71,13 @@ EOF
 
 The GitOps Application will deploy the following components for MinIO storage:
 
-* *Namespace*: A dedicated `minio` namespace that will contain all MinIO-related resources, providing isolation and organization for our storage components.
+* *Namespace*: A dedicated _minio_ namespace that will contain all MinIO-related resources, providing isolation and organization for our storage components.
 * *Deployment*: The MinIO application deployment that runs the MinIO server instance, configured to provide object storage capabilities for our autonomous vehicle.
 * *Service and Route*: A Kubernetes service and route that expose the MinIO dashboard, allowing us to access and manage the storage through a web interface.
-* *Persistent Volume Claim (PVC)*: Provides persistent storage space that will be used by the MinIO buckets to store both sensor data and AI models.
-* *Bucket Creation Script*: An initialization script that automatically creates the required buckets:
-  - `data` bucket for storing telemetry data from vehicle sensors
-  - `inference` bucket for storing AI models (both baseline and retrained models)
+* *Persistent Volume Claim (PVC)*: Provides persistent storage space that will be used by the MinIO bucket to store both AI models.
+* *Bucket Creation Script*: An initialization script that automatically creates the required _inference_ bucket.
 * *Model Download Script*: A script that downloads and stores our two baseline AI models from the GitHub repository:
-  - Stress detection model for identifying battery stress conditions
+  - Stress-detection model for identifying battery stress conditions
   - Time-to-failure model for predicting remaining battery life
 
 To verify that the deployment is progressing correctly, you can monitor the status of the pods:
@@ -90,7 +88,12 @@ To verify that the deployment is progressing correctly, you can monitor the stat
 watch oc get pods -n minio
 ----
 
-When all pods show `Running` and `Completed` status, it means that MinIO has been successfully deployed and is ready to use.
+[NOTE]
+====
+_You can exit the watch command by pressing *Ctrl+C* in your keyboard._
+====
+
+When the pods show `Running` and `Completed` status, it means that MinIO has been successfully deployed and is ready to use.
 
 === Step 3: Access MinIO Dashboard
 
@@ -107,6 +110,6 @@ Use the following credentials to log in:
 * *Username*: `minio`
 * *Password*: `minio123`
 
-The dashboard will allow you to verify that both buckets (`data` and `inference`) have been created and that the baseline AI models have been properly downloaded and stored. The `data` bucket should be empty, as we haven't generated any sensor data yet. But, the `inference` bucket should contain two folders. One containing the base Stress Detection model and the other containing the Time to Failure initial model.
+The dashboard will allow you to verify that the _inference_ bucket has been created and that the baseline AI models have been properly downloaded and stored. Check if the _inference_ bucket contains two folders: one containing the base Stress-Detection model and the other containing the Time-to-Failure initial model.
 
 image::2-2_minio-inference.png[MinIO inference models]

@@ -13,7 +13,7 @@ The inference server uses KServe custom resource definitions (CRDs) to define th
 
 == Deploying Inference Server using GitOps
 
-We will deploy the inference server using the same GitOps approach as MinIO, ensuring consistent deployment and management of our edge components.
+We will deploy the inference server using the same GitOps approach we used with MinIO, ensuring consistent deployment and management of our edge components.
 
 === Step 1: Deploy GitOps Application
 
@@ -48,7 +48,7 @@ EOF
 
 The GitOps Application will deploy the following Inference components:
 
-* *Namespace*: An `inference` namespace that isolates all AI model serving resources from other system components.
+* *Namespace*: An _inference_ namespace that isolates all AI model serving resources from other system components.
 * *ServingRuntime*: OpenVINO Model Server configuration supporting multiple model formats including OpenVINO IR, ONNX, TensorFlow, PaddlePaddle, and PyTorch. This runtime provides optimized edge inference with both REST and gRPC protocol support.
 * *Service and Route*: Network components that expose inference endpoints for external access, enabling the Battery Monitoring System to query AI models through REST APIs.
 * *Service Account*: Kubernetes service account configured with S3 access permissions to retrieve models from MinIO storage.
@@ -66,9 +66,14 @@ Monitor the deployment progress to ensure all components are properly deployed:
 watch oc get pods -n inference
 ----
 
+[NOTE]
+====
+_You can exit the watch command by pressing *Ctrl+C* in your keyboard._
+====
+
 When all pods show `Running` status, the inference server deployment is complete and ready to serve AI models.
 
-=== Step 2: Access Inference Endpoints
+=== Step 2: Check Inference Endpoints
 
 Once deployed, you can check the inference endpoints by running: 
 
