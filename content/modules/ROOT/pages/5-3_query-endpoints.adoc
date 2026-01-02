@@ -4,7 +4,7 @@ The Inference endpoint enables you to interact with the model and return predict
 
 . Navigate back to the *Jupyter Notebook* environment that we used for model training. 
 . Locate in the `notebooks` > `serving` folder the *query_models.ipynb* notebook. 
-. Make sure the code in the first cell is pointing to the correct inference URL: 
+. Make sure the code in the first cell is pointing to the correct inference URL:
 +
 [.console-input]
 [source,bash,subs="attributes+"]
@@ -12,12 +12,13 @@ The Inference endpoint enables you to interact with the model and return predict
 https://stress-detection-predictor.ai-edge-project.svc.cluster.local
 ----
 
-· Run the first cell to interact with the Stress Detection model.
+. Run the first cell to interact with the Stress Detection model.
 . If everything is correctly configured, we should get a response based on the input data.
 
 IMAGE_HERE 
 
 . Now, verify the correct URL for the time-to-failure inference endpoint:
++
 [.console-input]
 [source,bash,subs="attributes+"]
 ----

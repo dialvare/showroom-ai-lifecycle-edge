@@ -30,7 +30,7 @@ image::5-1_create-serving.png[Select Single Model Serving]
 +
 [NOTE]
 ====
-_We didn't specify the full path to the model because KServe will automatically pull it from the _/1/_ subdirectory in the path specified._
+_We didn't specify the full path to the model because KServe will automatically pull it from the /1/ subdirectory in the path specified._
 ====
 
 . When configured, click on *Deploy*.
