@@ -93,9 +93,9 @@ Use the following credentials to log in:
 To verify the data stream:
 
 * Navigate to *Explore* in the left-hand menu.
-* Select the *bms* and *battery_data* filters.
+* Select the *bms* and *battery_data* filters at the bottom.
 * Click *Submit* to execute the query.
 
-Data will start appearing from the right side of the screen. If you recently deployed the BMS app, the data may be difficult to see, so you can adjust the time interval to expand the graph. The following image shows data generated over the last 15 minutes:
+Data will start appearing from the right side of the screen. If you recently deployed the BMS app, the data may be difficult to see, so you can adjust the time interval to expand the graph. The following image shows data generated over the *past 15 minutes*:
 
 image::2-4_influxdb-telemetry.png[Sensor Telemetry in InfluxDB]
