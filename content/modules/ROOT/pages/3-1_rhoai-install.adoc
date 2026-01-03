@@ -25,6 +25,8 @@ The fundamental piece and operational hub will be the Red Hat OpenShift AI platf
 . The configuration should look like this:
 +
 image::3-1_rhoai-kserve-config.png[Kserve configuration]
++
+image::3-1_rhoai-knative-config.png[KNative-Serving configuration]
 
 . Keep the rest of the default values and press *Create*.
 . Wait for the _Phase_ to become _Ready_. This will mean that the operator is successfully configured and can be used.
