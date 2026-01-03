@@ -42,7 +42,7 @@ To test the pipeline functionality, we will perform a first manual execution. Fo
  ** *Pipeline version*: `Model retraining` is pre-filled.
 . Now, check the following parameter values. You may need to change the InfluxDB URL based on your environment:
 +
-[cols="1,2", options="header", subs="attributes+"]
+[cols="1,1", subs="attributes+"]
 |===
 | Parameter | Value
 
@@ -50,7 +50,7 @@ To test the pipeline functionality, we will perform a first manual execution. Fo
 | `minio`
 
 | aws_s3_bucket
-| `s3-storage`
+| `inference`
 
 | aws_s3_endpoint
 | `http://minio-microshift-vm.microshift-001.svc.cluster.local:30000`

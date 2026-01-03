@@ -21,31 +21,31 @@ image::6-3_pipeline-scheduled.png[Start Pipeline schedule]
 +
 [cols="1,1", subs="attributes+"]
 |===
-|Parameter |Value
+| Parameter | Value
 
-|aws_access_key_id
-|minio
+| aws_access_key_id
+| `minio`
 
-|aws_s3_bucket
-|s3-storage
+| aws_s3_bucket
+| `inference`
 
-|aws_s3_endpoint
-|http://minio-microshift-vm.microshift-001.svc.cluster.local:30000
+| aws_s3_endpoint
+| `http://minio-microshift-vm.microshift-001.svc.cluster.local:30000`
 
-|aws_secret_access_key
-|minio123
+| aws_secret_access_key
+| `minio123`
 
-|influxdb_bucket
-|bms
+| influxdb_bucket
+| `bms`
 
-|influxdb_org
-|redhat
+| influxdb_org
+| `redhat`
 
-|influxdb_token
-|admin_token
+| influxdb_token
+| `admin_token`
 
-|influxdb_url
-|https://influx-db-microshift-001.{openshift_cluster_ingress_domain}/
+| influxdb_url
+| `https://influx-db-microshift-001.{openshift_cluster_ingress_domain}/`
 |===
 
 . When all parameters are correctly configured, click *Create schedule*.
