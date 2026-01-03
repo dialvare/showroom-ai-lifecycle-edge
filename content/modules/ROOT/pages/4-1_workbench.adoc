@@ -24,4 +24,4 @@ image::4-1_workbench.png[Workbench status]
 * *User*: {openshift_cluster_admin_username}
 * *Password*: {openshift_cluster_admin_password}
 
-*IMAGE HERE*
+image::4-1_jupyterlab.png[JupyterLab landing page]

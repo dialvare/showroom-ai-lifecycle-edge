@@ -2,7 +2,7 @@
 
 Now it's time to create, train and store our firsts AI models. We will use the Notebooks that we just imported for it. To do so, navigate to the `ai-lifecycle-edge-gitops` > `notebooks` > `training` folder. All of them are ordered as shown below:
 
-*IMAGE HERE*
+image::4-3_listed-notebooks.png[Run Notebooks]
 
 * *01_retrieve-influx-data.ipynb*: Retrieves the battery data from InfluxDB and saves it.
 * *02_prepare-data.ipynb*: Modifies the raw dataset to make them available for training.
@@ -24,4 +24,4 @@ At this point, you can follow the instructions contained in each Notebook. Those
 https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
 ----
 
-Come back here when you run all of them.
+Once you have run all of them, the new AI models should have been uploaded to the vehicle's MinIO storage and are now being used by the Battery Monitoring System for real-time stress detection and time-to-failure predictions.
