@@ -1,10 +1,10 @@
 = Create a Model Serving platform
 
-A crucial phase in the AI lifecycle following model training is to make the models available as a service to be accessed through an API.
+Although the AI models are already running and serving predictions in the autonomous vehicle, we can also deploy a model serving platform in our RHOAI environment on SNO. This allows us to perform inference against the models directly from the re-training environment, which is useful for validating that the models work correctly after training.
 
 KServe offers two deployment modes: Serverless and RawDeployment. During the RHOAI installation, we chose RawDeployment, which is often preferred in cases where simpler, more manual configurations are desired. RawDeployment mode provides full control over Kubernetes resources, enabling detailed customization and configuration of deployment settings without relying on Knative, and therefore, without features like auto-scaling.
 
-In this section you will learn how to set up Red Hat OpenShift AI on Single Node OpenShift to make use of the mentioned RawDeployment model serving to expose both, the stress detection and the time to failure models.
+In this section you will learn how to set up Red Hat OpenShift AI on Single Node OpenShift to make use of the mentioned RawDeployment model serving to interact with the AI models.
 
 == Stress detection model
 
@@ -14,7 +14,7 @@ In this section you will learn how to set up Red Hat OpenShift AI on Single Node
 +
 image::5-1_create-serving.png[Select Single Model Serving]
 
-. This options deploys an associated model server for each model. Click on *Deploy model*.
+. This option deploys an associated model server for each model. Click on *Deploy model*.
 . Complete the following fields in the form:
  ** *Project*: The `ai-edge-project` namespace should be already selected by default.
  ** *Model deployment name*: Type the name for the model server. I will use `Stress Detection`.

@@ -3,7 +3,10 @@
 The Inference endpoint enables you to interact with the model and return predictions based on data inputs. We can test the connection with our models from a Jupyter Notebook:
 
 . Navigate back to the *Jupyter Notebook* environment that we used for model training. 
-. Locate in the `notebooks` > `serving` folder the *query_models.ipynb* notebook. 
+. Locate in the `notebooks` > `serving` folder the *query_models.ipynb* notebook.
++
+image::5-3_query-models.png[Query endpoints Notebook]
+
 . Make sure the code in the first cell is pointing to the correct inference URL:
 +
 [.console-input]
@@ -14,9 +17,6 @@ https://stress-detection-predictor.ai-edge-project.svc.cluster.local
 
 . Run the first cell to interact with the Stress Detection model.
 . If everything is correctly configured, we should get a response based on the input data.
-
-IMAGE_HERE 
-
 . Now, verify the correct URL for the time-to-failure inference endpoint:
 +
 [.console-input]
@@ -28,4 +28,4 @@ https://time-to-failure-predictor.ai-edge-project.svc.cluster.local
 . Run the second cell to test the inference endpoint for the Time to Failure model.
 . Again, we should see a response with the predicted time to failure.
 
-In this section, we have verified that our models are being served from RHOAI and are accessible through the endpoint. Similar to what we did from the Notebook, we will be able to perform queries from our Battery Monitoring System application, but we will explore that later.
+In this section, we have verified that our models are accessible through the endpoint and work correctly.
