@@ -1,31 +1,80 @@
 = Pipelines execution
 
-Red Hat OpenShift AI gives the possibilities to create pipelines by dragging and connecting Notebooks using the Elyra extension. The second alternative, -and the one we will use- is by importing an existing pipeline in YAML format created using the KubeFlow Pipelines SDK. This programmatic platform uses Python to simplify the process of writing and building the pipeline.
+Red Hat OpenShift AI gives the possibilities to create pipelines by dragging and connecting Notebooks using the Elyra extension. Another alternative, -and the one we will use- is by importing an existing pipeline in YAML format created using the KubeFlow Pipelines SDK. This programmatic platform uses Python to simplify the process of writing and building the pipeline.
 
 == Import Pipeline
 
-Once the server is set up, we will create a pipeline to fully automate the process. This pipeline will collect new data from the BMS application and use it to retrain a new model. The performance of this new model will then be compared against the existing one. If it outperforms the current model, it will be uploaded to the S3 bucket, where Model Serving will automatically deploy it. This process will be repeated for both the Stress Detection and Time to Failure Prediction models.
+Once the server is set up, we will create a pipeline to fully automate the process. This pipeline will collect new data from the BMS application and use it to retrain a new model. The performance of this new model will then be compared against the existing one. If it outperforms the current model, it will be uploaded to the S3 bucket in MicroShift. This process will be repeated for both the Stress Detection and Time to Failure prediction models.
 
-In order to save some time we will import it instead of creating it manually. If you want to learn more about how to create pipelines, check the https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.18/html/openshift_ai_tutorial_-_fraud_detection_example/implementing-pipelines#create_a_pipeline[documentation].
+In order to save some time we will import the pipeline instead of creating it manually. If you want to learn more about how to create pipelines, check the https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.18/html/openshift_ai_tutorial_-_fraud_detection_example/implementing-pipelines#create_a_pipeline[documentation].
 
 . First, open the *Jupyter Environment* with the Notebooks used to train the models and test the endpoints. 
-. In the folder structure on the left, locate the `pipelines` folder and open it. 
-. Locate the `model_retraining.yaml` pipeline file. *Right-click* on it and select *Download*.
+. In the folder structure on the left, navigate to the `notebooks` > `pipelines` folder and locate the *model-retraining.yaml* pipeline file. 
+. *Right-click* on it and select *Download*.
++
+image::6-2_pipeline-download.png[Download pipeline file]
+
 . Save the file locally in your laptop.
-
-image::5-2_pipeline-download.png[Download pipeline file]
-
-[start=5]
-
 . Now, go back to your *Red Hat OpenShift AI Dashboard*.
 . Make sure you are in the *Pipelines* tab inside our project.
 . Select *Import pipeline* and complete the form as follows:
  ** *Project*: The `ai-edge-project` project should be selected by default.
  ** *Pipeline name*: Name it as `Model retraining`.
  ** Verify that the *Upload a file* check is marked.
- ** Click the *Upload* button and select the `model_retraining.yaml` from your laptop.
+ ** Click the *Upload* button and select the `model-retraining.yaml` from your laptop.
 . When completed, press *Import pipeline*.
 
 You should see the different pipeline nodes and steps displayed in a graphical way, like this:
 
 image::6-2_pipeline-imported.png[Imported Pipeline]
+
+== Run Pipeline
+
+To test the pipeline functionality, we will perform a first manual execution. Follow these steps:
+
+. Once the pipeline is imported, click on the blue *Actions* button in the top-right corner.
+. Select *Create run* from the dropdown menu.
+. Configure the pipeline execution as follows:
+ ** *Project*: Verify the `ai-edge-project` is selected.
+ ** *Experiment*: Keep the `Default` one.
+ ** *Name*: Type `First run`.
+ ** *Pipeline*: `Model retraining` should be already selected.
+ ** *Pipeline version*: `Model retraining` is pre-filled.
+. Now, check the following parameter values. You may need to change the InfluxDB URL based on your environment:
++
+[cols="1,2", options="header", subs="attributes+"]
+|===
+| Parameter | Value
+
+| aws_access_key_id
+| `minio`
+
+| aws_s3_bucket
+| `s3-storage`
+
+| aws_s3_endpoint
+| `http://minio-microshift-vm.microshift-001.svc.cluster.local:30000`
+
+| aws_secret_access_key
+| `minio123`
+
+| influxdb_bucket
+| `bms`
+
+| influxdb_org
+| `redhat`
+
+| influxdb_token
+| `admin_token`
+
+| influxdb_url
+| `https://influx-db-microshift-001.{openshift_cluster_ingress_domain}`
+|===
+
+. When completed, click *Create run*.
+
+At this point, the pipeline will start executing. The first node retrieves data from InfluxDB in the vehicle, then the data is processed and prepared for model training. Next, the *Stress Detection* and *Time to Failure* models are trained in parallel. Once training is complete, the following node evaluates whether the new models outperform the existing ones in the vehicle using fresh data. If not, the models are discarded. However, if the new models show better performance, the final nodes are executed to upload them to the _inference_ bucket in MinIO on our autonomous vehicle.
+
+When the execution finishes, all nodes will be marked with green checkmarks indicating a successful run, as shown in the image below:
+
+image::6-2_pipeline-complete.png[Pipeline execution complete]

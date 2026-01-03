@@ -8,10 +8,10 @@ In order to be able to run pipelines in RHOAI, first a pipelines server is neede
 
 . Navigate back to the *Red Hat OpenShift AI Dashboard*.
 . In your `ai-edge-project` project dashboard, navigate to the *Pipelines* tab.
-. Before starting using pipelines, we need to create the server. Click on *Configure pipeline server*.
 +
-image::5-1_pipeline-server.png[Create Pipelines Server]
+image::6-1_pipeline-server.png[Create Pipelines Server]
 
+. Before starting using pipelines, we need to create the server. Click on *Configure pipeline server*.
 . Here we need to create a new Object storage connection that uses our pipelines bucket. Complete the fields with your s3 data:
  ** *Access key*: Type the MinIO username. In this case `minio`.
  ** *Secret key*: The password for the previous user will be `minio123`.
@@ -20,6 +20,6 @@ image::5-1_pipeline-server.png[Create Pipelines Server]
  ** *Bucket*: Indicate the `pipelines` bucket name.
 . When filled, scroll down and press *Configure pipeline server*.
 
-When we create the server, a new DataSciencePipelineApplication custom resource is created in your OpenShift and provides an API endpoint and a database for storing metadata. Wait until the process is complete. Take into account that it might take a few minutes to finish. Once ready, the Import pipeline option should appear:
+When we create the server, a new DataSciencePipelineApplication custom resource is created in your OpenShift that provides an API endpoint and a database for storing metadata. Wait until the process is complete. Take into account that it might take a few minutes to finish. Once ready, the Import pipeline option should appear:
 
-image::5-1_import-pipeline.png[Pipelines Server ready]
+image::6-1_import-pipeline.png[Pipelines Server ready]

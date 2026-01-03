@@ -6,7 +6,11 @@ Our machine learning models need to adapt to evolving data patterns to maintain 
 
 Now let's configure the pipeline to execute automatically:
 
-. Once the pipeline is imported, click on the blue *Actions* button in the top-right corner. 
+. Now, let's go back to the *Pipelines* view in the left-hand menu.
+. Click again on the *Three dots* at the far right of our *Model Retraining* pipeline.
++
+image::6-3_pipeline-scheduled.png[Start Pipeline schedule]
+
 . Select *Create schedule* from the dropdown menu.
 . Fill in the schedule configuration form:
  ** *Name*: `Scheduled run`
@@ -26,7 +30,7 @@ Now let's configure the pipeline to execute automatically:
 |s3-storage
 
 |aws_s3_endpoint
-|http://minio-service.minio.svc.cluster.local:9000
+|http://minio-microshift-vm.microshift-001.svc.cluster.local:30000
 
 |aws_secret_access_key
 |minio123
@@ -46,6 +50,4 @@ Now let's configure the pipeline to execute automatically:
 
 . When all parameters are correctly configured, click *Create schedule*.
 
-The pipeline will now execute automatically every 10 minutes, continuously improving your models with fresh battery data. Come back after 10 minutes and the first scheduled run should be underway. Once it finishes, all the steps should have a green tick like the one shown below:
-
-image::6-2_pipeline-complete.png[Pipeline finished execution]
+The pipeline will now execute automatically every 10 minutes, continuously improving your models with fresh battery data. Come back after 10 minutes and the first scheduled run should be underway.
