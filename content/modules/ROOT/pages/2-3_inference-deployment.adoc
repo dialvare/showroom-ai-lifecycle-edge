@@ -73,21 +73,43 @@ _You can exit the watch command by pressing *Ctrl+C* in your keyboard._
 
 When all pods show `Running` status, the inference server deployment is complete and ready to serve AI models.
 
-=== Step 2: Check Inference Endpoints
+=== Step 2: Test Inference Endpoints
 
-Once deployed, you can check the inference endpoints by running: 
+Once the inference services are ready, the AI models should also be loaded from MinIO and ready for inference. We can manually test this connection to verify that everything is working correctly. Later, the Battery Monitoring System application we deploy will automatically perform these inference queries.
+
+Let's start by testing the *Stress Detection* model. The following command sends simulated sensor data to the inference pod to determine whether the battery is under stress or not:
 
 [.console-input]
 [source,bash,subs="attributes+"]
 ----
-oc get inferenceservice -n inference
+curl -s -X POST http://$(oc get pod -n inference -l app=isvc.stress-detection-predictor -o jsonpath='{.items[0].status.podIP}'):8888/v2/models/stress-detection/infer \
+     -H "Content-Type: application/json" \
+     -d '{"inputs": [{"name": "inputs", "shape": [1, 8], "datatype": "FP32", "data": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}]}' | \
+     jq -r '.outputs[0].data[0] | if . > 0.5 then "STRESSED" else "NORMAL" end'
 ----
 
-The inference server will be ready to serve predictions for both battery stress-detection and time-to-failure models.
+If everything is correctly configured, you should receive a response indicating either _STRESSED_ or _NORMAL_ battery status.
 
+Now, let's perform the same test against the *Time to Failure* model:
+
+[.console-input]
 [source,bash,subs="attributes+"]
 ----
-NAME               URL                                                             READY   PREV   LATEST   PREVROLLEDOUTREVISION   LATESTREADYREVISION   AGE
-stress-detection   http://stress-detection-predictor.inference.svc.cluster.local   True                                                                  44s
-time-to-failure    http://time-to-failure-predictor.inference.svc.cluster.local    True                                                                  43s
+curl -s -X POST http://$(oc get pod -n inference -l app=isvc.time-to-failure-predictor -o jsonpath='{.items[0].status.podIP}'):8888/v2/models/time-to-failure/infer \
+     -H "Content-Type: application/json" \
+     -d '{
+           "inputs": [
+             {
+               "name": "keras_tensor",
+               "shape": [1, 5],
+               "datatype": "FP32",
+               "data": [40.0, 48.0, 162.5, -2.0, -18.0]
+             }
+           ]
+         }' | \
+     jq -r '.outputs[0].data[0] | "Predicted Time Before Failure: \(.) hours"'
 ----
+
+This command should return a prediction of the remaining time until a potential battery failure.
+
+With both inference endpoints responding correctly, our AI model serving infrastructure is fully operational and ready to be consumed by the Battery Monitoring System.

@@ -75,7 +75,7 @@ https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
 
 The dashboard will display real-time battery telemetry data, AI predictions for stress detection and time-to-failure, and provide alerting capabilities for battery health monitoring.
 
-*IMAGE HERE*
+image::2-4_bms-dashboard.png[Battery Monitoring System]
 
 Also you can access the InfluxDB dashboard where the sensor data es collected and prepared to be sent to the BMS dashbaord.
 
@@ -96,6 +96,6 @@ To verify the data stream:
 * Select the *bms* and *battery_data* filters at the bottom.
 * Click *Submit* to execute the query.
 
-Data will start appearing from the right side of the screen. If you recently deployed the BMS app, the data may be difficult to see, so you can adjust the time interval to expand the graph. The following image shows data generated over the *past 15 minutes*:
+Data will start appearing from the right side of the screen. If you recently deployed the BMS app, the data may be difficult to see, so you can adjust the time interval to expand the graph. The following image shows data generated over the *past 5 minutes*:
 
 image::2-4_influxdb-telemetry.png[Sensor Telemetry in InfluxDB]
