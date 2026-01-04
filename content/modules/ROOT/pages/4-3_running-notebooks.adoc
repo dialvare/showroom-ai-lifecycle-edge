@@ -21,7 +21,7 @@ At this point, you can follow the instructions contained in each Notebook. Those
 [.console-input]
 [source,bash,subs="attributes+"]
 ----
-https://bms-dashboard-microshift-001.{openshift_cluster_ingress_domain}
+https://influx-db-microshift-001.{openshift_cluster_ingress_domain}
 ----
 
 Once you have run all of them, the new AI models should have been uploaded to the vehicle's MinIO storage and are now being used by the Battery Monitoring System for real-time stress detection and time-to-failure predictions.
