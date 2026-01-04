@@ -22,8 +22,6 @@ image::5-1_create-serving.png[Select Single Model Serving]
  ** *Model framework*: Select the format in which the model was saved. Our model was saved in `openvino_ir - opset13` format.
  ** *Model server replicas*: Choose the number of pods to serve the model. Just `1` should be okay in our case.
  ** *Model server size*: Assign resources to the server. Our model is quite simple, so `Small` will be enough.
- ** *Check* the *Make deployed models available through an external route* box to make the model externally available.
- ** *Uncheck* the *Token authentication* box.
  ** *Check* the *Existing data connection* box, if it is not already selected.
  ** *Connection*: Here the `vehicle-models` DataConnection should appear.
  ** *Path*: Indicate the path to your model location in the S3 bucket. That's: `stress-detection`.

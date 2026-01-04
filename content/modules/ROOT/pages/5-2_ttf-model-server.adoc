@@ -13,8 +13,6 @@ It's time to repeat the same steps for the Time to Failure AI model. The steps w
  ** *Model framework*: Our model was saved in `openvino_ir - opset13` format.
  ** *Model server replicas*: Keep `1` for the number of pods.
  ** *Model server size*: Assign `Small` to the server size.
- ** *Check* the *Make deployed models available through an external route* box to make the model externally available.
- ** *Uncheck* the *Token authentication* box.
  ** *Check* the *Existing data connection* box.
 ** *Connection*: Select again the `vehicle-models` DataConnection.
 ** *Path*: Our Time to Failure model was saved in `time-to-failure`.
