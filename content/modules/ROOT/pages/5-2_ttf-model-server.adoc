@@ -17,7 +17,7 @@ It's time to repeat the same steps for the Time to Failure AI model. The steps w
  ** *Uncheck* the *Token authentication* box.
  ** *Check* the *Existing data connection* box.
 ** *Connection*: Select again the `vehicle-models` DataConnection.
-** *Path*: Our Time to Failure model was saved in `time-to-failure/`.
+** *Path*: Our Time to Failure model was saved in `time-to-failure`.
 . Finally, click on *Deploy*.
 
 Wait until you see a *green checkmark* in the Status column. Then, the *Internal endpoint details* will show the model inference API for our second AI model.

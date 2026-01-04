@@ -26,7 +26,7 @@ image::5-1_create-serving.png[Select Single Model Serving]
  ** *Uncheck* the *Token authentication* box.
  ** *Check* the *Existing data connection* box, if it is not already selected.
  ** *Connection*: Here the `vehicle-models` DataConnection should appear.
- ** *Path*: Indicate the path to your model location in the S3 bucket. That's: `stress-detection/`.
+ ** *Path*: Indicate the path to your model location in the S3 bucket. That's: `stress-detection`.
 +
 [NOTE]
 ====
@@ -38,10 +38,5 @@ _We didn't specify the full path to the model because KServe will automatically 
 At that moment, new ServingRuntime and InferenceService resources will be created in your node. In the Models tab, your new Model Service should appear. Wait until you see a *green checkmark* in the Status column. Also, check the *Internal endpoint details* to show the model inference API where to make requests to.
 
 image::5-1_stress-detection.png[Stress detection inference endpoint]
-
-[NOTE]
-====
-_The URL shown in the Inference endpoint field for the deployed model is not complete. To send queries to the model, you must add the /v2/models/<model_name>/infer string to the end of the URL. More information can be found in the link:https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.12/html-single/release_notes/index?extIdCarryOver=true&sc_cid=701f2000000tyBtAAI#known-issues_relnotes[RHOAIENG-3018 documentation]._
-====
 
 As a result, the model is available as a service and can be accessed using API requests.
