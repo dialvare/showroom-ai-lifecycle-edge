@@ -11,7 +11,7 @@ Again, we will use GitOps to deploy all the Battery Monitoring System components
 Deploy the Battery Monitoring System GitOps application:
 
 [.console-input]
-[source,yaml]
+[source,yaml,subs="attributes+"]
 ----
 oc apply -f - <<EOF
 apiVersion: argoproj.io/v1alpha1
@@ -21,14 +21,25 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    name: ''
-    namespace: ''
     server: https://kubernetes.default.svc
+    namespace: battery-demo
   source:
     path: bootstrap/battery-simulation/groups/dev
     repoURL: https://github.com/rhpds/ai-lifecycle-edge-gitops.git
     targetRevision: main
-  sources: []
+    kustomize:
+      patches:
+        - target:
+            kind: ConfigMap
+            name: bms-dashboard-config
+          patch: |-
+            - op: replace
+              path: /data/config.json
+              value: |
+                {
+                  "BATTERY_METRICS_WS_ENDPOINT": "wss://mqtt2ws-microshift-001.{openshift_cluster_ingress_domain}/battery/metrics/",
+                  "OPEN_AI_API_KEY": "my-key"
+                }
   project: default
   syncPolicy:
     automated:
