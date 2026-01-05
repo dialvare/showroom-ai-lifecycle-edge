@@ -84,7 +84,7 @@ Let's start by testing the *Stress Detection* model. The following command sends
 ----
 curl -s -X POST http://$(oc get pod -n inference -l app=isvc.stress-detection-predictor -o jsonpath='{.items[0].status.podIP}'):8888/v2/models/stress-detection/infer \
      -H "Content-Type: application/json" \
-     -d '{"inputs": [{"name": "inputs", "shape": [1, 9], "datatype": "FP32", "data": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}]}' | \
+     -d '{"inputs": [{"name": "keras_tensor", "shape": [1, 9], "datatype": "FP32", "data": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}]}' | \
      jq -r '.outputs[0].data[0] | if . > 0.5 then "STRESSED" else "NORMAL" end'
 ----
 
