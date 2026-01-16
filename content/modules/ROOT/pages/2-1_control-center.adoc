@@ -1,6 +1,11 @@
 = Dashboards Control Center
 
-Welcome to the *Dashboard Control Center* - your central hub for accessing, monitoring and managing all the relevant dashboards involved in this demo. Some of them will be deployed along the way and cannot be accessed right now, but you can always come back here to quickly find the URLs and credentials needed from a central page
+Welcome to the *Dashboard Control Center* - your central hub for accessing, monitoring, and managing all the dashboards involved in this demo. Some of them will be deployed along the way and cannot be accessed yet, but you can always come back here to quickly find the URLs and credentials you need.
+
+[NOTE]
+====
+_This section is provided for your convenience, allowing quick access to any dashboard or machine you may need. However, all the necessary steps will be provided throughout the demo, so feel free to proceed to the next section._
+====
 
 == Autonomous Vehicle Access
 
@@ -106,7 +111,7 @@ AI/ML platform for model training, serving, and pipeline automation.
 [.console-input]
 [source,bash,subs="attributes+"]
 ----
-https://hods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}
+https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}
 ----
 
 [cols="1,2", options="header"]
