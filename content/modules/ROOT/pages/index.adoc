@@ -19,6 +19,9 @@ a|- Understanding our case
 - Essentials of Edge
 - Explore our design
 
+| Dashboards Control Center | 1min 
+a|- Control center access
+
 | Autonomous Vehicle | 15min 
 a|- Understand the vehicle infrastructure
 - Deplying MinIO storage and models

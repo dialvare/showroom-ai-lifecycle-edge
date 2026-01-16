@@ -3,39 +3,39 @@
 ** xref:1-2_essentials-edge.adoc[1.2 Essentials of Edge]
 ** xref:1-3_architecture.adoc[1.3 Explore our design]
 
-* Manual configuration (WIP)
-** xref:manual-steps.adoc[Manual steps]
+* 2. Dashboards Control Center
+** xref:2-1_control-center.adoc[2.1 Control center]
 
-* 2. Autonomous Vehicle
-** xref:2-1_vehicle-infrastructure.adoc[2.1 Vehicle infra]
-** xref:2-2_minio-deployment.adoc[2.2 Deploying MinIO]
-** xref:2-3_inference-deployment.adoc[2.3 Serving models]
-** xref:2-4_deploy-bms.adoc[2.4 Deploying the BMS app]
+* 3. Autonomous Vehicle
+** xref:2-1_vehicle-infrastructure.adoc[3.1 Vehicle infra]
+** xref:2-2_minio-deployment.adoc[3.2 Deploying MinIO]
+** xref:2-3_inference-deployment.adoc[3.3 Serving models]
+** xref:2-4_deploy-bms.adoc[3.4 Deploying the BMS app]
 
-* 3. RHOAI configuration
-** xref:3-1_rhoai-install.adoc[3.1 RHOAI installation]
-** xref:3-2_datascience-project.adoc[3.2 Datascience projects]
-** xref:3-3_data-connection-serving.adoc[3.3 DataConnections]
+* 4. RHOAI configuration
+** xref:3-1_rhoai-install.adoc[4.1 RHOAI installation]
+** xref:3-2_datascience-project.adoc[4.2 Datascience projects]
+** xref:3-3_data-connection-serving.adoc[4.3 DataConnections]
 
-* 4. Model Re-training
-** xref:4-1_workbench.adoc[4.1 Workbenches]
-** xref:4-2_importing-notebooks.adoc[4.2 Import Notebooks]
-** xref:4-3_running-notebooks.adoc[4.3 Training our models]
+* 5. Model Re-training
+** xref:4-1_workbench.adoc[5.1 Workbenches]
+** xref:4-2_importing-notebooks.adoc[5.2 Import Notebooks]
+** xref:4-3_running-notebooks.adoc[5.3 Training our models]
 
-* 5. Model Serving
-** xref:5-1_stress-model-server.adoc[5.1 Stress Detection serving]
-** xref:5-2_ttf-model-server.adoc[5.2 Time to Failure serving]
-** xref:5-3_query-endpoints.adoc[5.3 Querying endpoints]
+* 6. Model Serving
+** xref:5-1_stress-model-server.adoc[6.1 Stress Detection serving]
+** xref:5-2_ttf-model-server.adoc[6.2 Time to Failure serving]
+** xref:5-3_query-endpoints.adoc[6.3 Querying endpoints]
 
-* 6. DataScience Pipelines
-** xref:6-1_pipeline-server.adoc[6.1 Pipeline server]
-** xref:6-2_pipeline-execution.adoc[6.2 Pipeline execution]
-** xref:6-3_pipeline-automation.adoc[6.3 Pipeline automation]
+* 7. DataScience Pipelines
+** xref:6-1_pipeline-server.adoc[7.1 Pipeline server]
+** xref:6-2_pipeline-execution.adoc[7.2 Pipeline execution]
+** xref:6-3_pipeline-automation.adoc[7.3 Pipeline automation]
 
-* 7. Model Monitoring
-** xref:7-1_trustyai.adoc[7.1 TrustyAI]
-** xref:7-2_TODO-bias.adoc[7.2 Detect bias]
-** xref:7-3_TODO-drift.adoc[7.3 Data drift]
+* 8. Model Monitoring
+** xref:7-1_trustyai.adoc[8.1 TrustyAI]
+** xref:7-2_TODO-bias.adoc[8.2 Detect bias]
+** xref:7-3_TODO-drift.adoc[8.3 Data drift]
 
-* 8. Battery Monitoring System
-** xref:8-1_TODO-test-alerts.adoc[8.1 Testing alerts]
+* 9. Battery Monitoring System
+** xref:8-1_TODO-test-alerts.adoc[9.1 Testing alerts]

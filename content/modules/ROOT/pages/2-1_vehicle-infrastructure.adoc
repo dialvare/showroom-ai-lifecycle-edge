@@ -4,6 +4,31 @@ In this section, we will work with our autonomous vehicle operating within the i
 
 Our goal in this section is to verify that the vehicle's infrastructure is properly configured and running, so we can deploy the necessary components to run our Battery Monitoring System app in the following sections.
 
+== Connecting to the Autonomous Vehicle
+
+To access the autonomous vehicle's infrastructure, you need to connect through the bastion host first, and then 
+access the MicroShift virtual machine.
+
+First, establish an `ssh` connection to the bastion host using the command provided in your environment credentials. 
+When asked for a password, please anter the bastion password provided in the lab credentials. Something like:
+
+[.console-input]
+[source,bash,subs="attributes+"]
+----
+{bastion_ssh_command}
+----
+
+* *Password*: {bastion_ssh_password}
+
+Once connected to the bastion, use `virtctl` to access the autonomous vehicle's virtual machine. The command should 
+look similar to the following one:
+
+[.console-input]
+[source,bash,subs="attributes+"]
+----
+virtctl ssh cloud-user@microshift.microshift-001 --identity-file=/home/lab-user/.ssh/microshift-001
+----
+
 == Checking MicroShift Status
 
 Once connected to our autonomous vehicle, the first step is to verify that MicroShift is running correctly. MicroShift is Red Hat's lightweight Kubernetes distribution designed specifically for edge computing environments. It provides the essential Kubernetes functionality needed to run containerized applications in resource-constrained environments like our autonomous vehicle.
