@@ -38,7 +38,11 @@ spec:
               value: |
                 {
                   "BATTERY_METRICS_WS_ENDPOINT": "wss://mqtt2ws-microshift-001.{openshift_cluster_ingress_domain}/battery/metrics/",
-                  "OPEN_AI_API_KEY": "my-key"
+                  "OPEN_AI_API_KEY": "my-key",
+                  "STRESS_DETECTION_AI_API_ENDPOINT": "https://stress-detection-predictor-microshift-001.{openshift_cluster_ingress_domain}/",
+                  "TIME_TO_FAILURE_AI_API_ENDPOINT": "https://time-to-failure-predictor-microshift-001.{openshift_cluster_ingress_domain}/",
+                  "BATTERY_SIMULATION_API_ENDPOINT": "https://battery-simulation-microshift-001.{openshift_cluster_ingress_domain}/",
+                  "AUTO_INFERENCE_INTERVAL_MS": 30000
                 }
   project: default
   syncPolicy:
