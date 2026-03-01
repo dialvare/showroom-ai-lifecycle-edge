@@ -1,0 +1,142 @@
+= Red Hat Edge Manager
+
+== Installing Red Hat Edge Manager
+
+Red Hat Edge Manager can be installed in the SNO cluster via Helm chart. Here are the steps:
+. First, create a Project where all the transportation robots will reside:
++
+    ````
+    apiVersion: project.openshift.io/v1
+    kind: Project
+    metadata:
+      name: rhem
+    ````
+. In the OCP Web Console left menu, navigate to *Helm* > *Releases* > *Create Helm Release*.
+. Once in the Software Catalog, make sure to select the new *Project: rhem* and search for _Red Hat Edge Manager_.
+. Click on the *Red Hat Edge Manager* Helm chart and press *Create* on the right side of the screen.
+. In the new page make sure the *Release name* is `rhem`.
+. Now, in your terminal, run the following commands:
++
+  ````
+  oc get configmap default-ingress-cert \
+    -n openshift-config-managed \
+    -o jsonpath='{.data.ca-bundle\.crt}' > /tmp/ingress-ca.crt
+
+  cat /tmp/ingress-ca.crt
+  ````
+. Now, in the *Configure via* section, check the *YAML view* button, locate the _global.auth.caCert_ field and paste the contents of /tmp/ingress-ca.crt as shown below:
++
+  ````
+  global:
+    auth:
+      caCert: |
+        -----BEGIN CERTIFICATE-----
+        MIIDWzCCAkOgAwIBAgIIUUg1fwtYuLYwDQYJKoZIhvcNAQELBQAwJjEkMCIGA1UE
+        ...
+        [Full certificate content]
+        ...
+        -----END CERTIFICATE-----
+  ````
+. Finally, click *Create* to start the Red Hat Edge Manager deployment.
+
+You will be redirected to the Topology view where you can track the deployment of all the Red Hat Edge Manager components. Look for the *flightctl-ui* instance and click on the *Route* on the right. The URL should be:
+
+`https://ui.rhem.{openshift_cluster_ingress_domain}`
+
+== Granting permissions
+
+Grant permissions to your user. Start by labeling the namespace to trigger its automatic discovery and initialization as a Red Hat Edge Manager Organization:
+
+````
+oc label namespace rhem io.flightctl/instance=rhem
+````
+
+Then grant your user full access to Red Hat Edge Manager resources:
+
+````
+oc adm policy add-role-to-user view admin -n rhem
+
+oc adm policy add-role-to-user flightctl-admin-rhem admin -n rhem
+````
+
+You can now navigate to the Red Hat Edge Manager dashboard and authenticate using your OpenShift credentials:
+* *User*: {openshift_cluster_admin_username}
+* *Password*: {openshift_cluster_admin_password}
+
+Optionally you can also use the Red Hat Edge Manager CLI to connect to your instance by running:
+````
+flightctl login https://api.rhem.{openshift_cluster_ingress_domain} -k --token=$(oc whoami -t)
+````
+
+== Provisioning devices
+
+=== Obtaining the RHEL container disk image
+
+Red Hat does not provide a pre-built "Red Hat Edge Manager RHEL image" to download. You obtain the image by building it yourself from the RHEL bootc base image using the *bootc-image-builder* tool. The result is a QCoW2 disk that you then put into a container image so OpenShift Virtualization can use it as a `containerDisk`.
+
+. *Pull the RHEL bootc base image* (and optionally build a custom image from it with a Containerfile):
++
+  Base image: `registry.redhat.io/rhel9/rhel-bootc:9.4`
+  You can use this image as-is or derive your own (e.g. add packages, users) and push to your registry.
+
+. *Convert the bootc image to QCoW2* using bootc-image-builder. The image must be available locally (e.g. `podman pull` first). Example:
++
+````
+mkdir -p output
+sudo podman run --rm -it --privileged \
+  --pull=newer \
+  --security-opt label=type:unconfined_t \
+  -v $(pwd)/output:/output \
+  -v /var/lib/containers/storage:/var/lib/containers/storage \
+  registry.redhat.io/rhel9/bootc-image-builder:latest \
+  --type qcow2 \
+  registry.redhat.io/rhel9/rhel-bootc:9.4
+````
++
+  The QCoW2 file is written to `output/qcow2/disk.qcow2`. Replace the last argument with your own image reference if you built a custom image.
+
+. *Create a container image that contains the QCoW2* so OpenShift Virtualization can use it as a `containerDisk`. The disk must be in `/disk/` inside the image. Example Containerfile:
++
+````
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest AS builder
+ADD --chown=107:107 output/qcow2/disk.qcow2 /disk/
+RUN chmod 0440 /disk/*
+FROM scratch
+COPY --from=builder /disk/* /disk/
+````
++
+  Build and push to your registry (e.g. `podman build -t YOUR_REGISTRY/rhel-edge-manager-disk:latest .` and `podman push ...`). Use that image reference as `YOUR_RHEL_IMAGE_REPO:YOUR_TAG` in the VirtualMachine manifest below.
+
+*Additional resources:* link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_image_mode_for_rhel_to_build_deploy_and_manage_operating_systems/creating-bootc-compatible-base-disk-images-with-bootc-image-builder_using-image-mode-for-rhel-to-build-deploy-and-manage-operating-systems[Creating bootc-compatible base disk images with bootc-image-builder], link:https://developers.redhat.com/articles/2024/11/11/deploy-image-mode-rhel-openshift-virtualization[Build and deploy image mode for RHEL on OpenShift Virtualization].
+
+=== Creating the cloud-init configuration
+
+Create the enrollment configuration and cloud-init user data so the VM gets the Red Hat Edge Manager agent config on first boot:
+
+. Request a new Red Hat Edge Manager agent enrollment configuration and save it to a file:
++
+````
+flightctl certificate request --signer=enrollment --expiration=365d --output=embedded > config.yaml
+````
+
+. Create a cloud-config user data file that writes the agent configuration on first boot:
++
+````
+cat <<EOF > cloud-config.yaml
+#cloud-config
+write_files:
+- path: /etc/flightctl/config.yaml
+  content: $(cat config.yaml | base64 -w0)
+  encoding: b64
+EOF
+````
+
+. Create a Kubernetes Secret in the `rhem` project with the cloud-init user data:
++
+````
+oc create secret generic enrollment-secret --from-file=userdata=cloud-config.yaml -n rhem
+````
+
+=== Creating the RHEL virtual machine
+
+
